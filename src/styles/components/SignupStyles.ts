@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import GlobalStyles from "../general/global_styles";
 
-export const loginStyles = StyleSheet.create({
+export const signupStyles = StyleSheet.create({
     keyboardViewContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -28,6 +28,7 @@ export const loginStyles = StyleSheet.create({
         resizeMode: 'cover',
     },
     subHeader: {
+        width: 345,
         fontFamily: GlobalStyles.baseFont,
         fontSize: 16,
         marginTop: 16,
