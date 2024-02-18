@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button, AsyncS } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
 import React from 'react'
 import { RootStackParamList } from '../navigation/navigation'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'

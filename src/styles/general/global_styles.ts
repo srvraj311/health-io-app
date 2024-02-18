@@ -1,6 +1,7 @@
 const GlobalStyles = {
     // Primary Colours
     primaryColour: '#02B875',
+    secondaryColor: '#1F274A',
 
     // Backgrounds Colours
     pagBackground: '#F3FAF5',
@@ -17,6 +18,8 @@ const GlobalStyles = {
     // Font Styles and sizes
     baseFont: 'Be Vietnam Pro',
 
+
+    //
 }
 
 

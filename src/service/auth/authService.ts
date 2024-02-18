@@ -9,6 +9,7 @@ const validateEmail = (email: string) => {
 }
 
 const validateEmailWithApi = (email: string) => {
+    email = email.toLowerCase();
     if (validateEmail(email)) {
         return post(ApiEndpoints.VALIDATE, { email: email })
     } else {

@@ -23,7 +23,7 @@ const Login = () => {
                 if (response.status === 'OK') {
                     navigation.push('Signup', {
                         email: email,
-                        isUserExists: false
+                        isUserExists: true
                     })
                 }
             })
