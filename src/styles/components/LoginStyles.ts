@@ -44,7 +44,7 @@ export const loginStyles = StyleSheet.create({
         backgroundColor: GlobalStyles.grey100,
         fontFamily: GlobalStyles.baseFont,
         fontSize: 16,
-        color: GlobalStyles.black
+        color: GlobalStyles.grey700
     },
     bgImage: {
         resizeMode: 'cover',

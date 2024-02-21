@@ -8,12 +8,19 @@ const GlobalStyles = {
 
     // Grey Colours
     white: '#FFFFFF',
-    grey100: '#F4F4F5',
-    grey200: '#F5F5F5',
-    grey300: '#D4D4D8',
-    grey400: '#D9D9D9',
+    grey50: '#fafafa',
+    grey100: '#f4f4f5',
+    grey200: '#e4e4e7',
+    grey300: '#d4d4d8',
+    grey400: '#a1a1aa',
     grey500: '#71717A',
+    grey600: '#52525b',
+    grey700: '#313135',
+    grey800: '#1e1e1e',
+    grey900: '#18181b',
+    grey950: '#09090b',
     black: '#000000',
+
 
     // Font Styles and sizes
     baseFont: 'Be Vietnam Pro',

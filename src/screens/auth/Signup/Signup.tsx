@@ -83,17 +83,21 @@ const Signup = ({ route }: SignupProps): JSX.Element => {
                             <Text
                                 style={signupStyles.subHeader}>The right choice for health care needs</Text>
                             <TextInput
-                                // onChangeText={val => setEmail(val)}
+                                onChangeText={val => setEmail(val)}
                                 secureTextEntry={true}
                                 placeholderTextColor={GlobalStyles.grey500}
                                 placeholder='Enter your password' style={signupStyles.input} />
                             <PrimaryButton
                                 title='Login'
                                 onPress={() => { onLoginPressed(email) }}></PrimaryButton>
-                            <View style={signupStyles.textLinkContainer}>
+                            {/* <View style={signupStyles.textLinkContainer}>
                                 <Text
-                                    style={signupStyles.textLinkLeft}>Don't have an account ?</Text>
-                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Go Back</Text>
+                                    style={signupStyles.textLinkLeft}> Entered wrong Email ?</Text>
+                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> &nbsp; Update Email </Text>
+                            </View> */}
+                            <View style={signupStyles.textLinkContainer}>
+                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Forgot Password ?</Text>
+                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Change Email</Text>
                             </View>
 
                         </React.Fragment>

@@ -43,7 +43,7 @@ export const signupStyles = StyleSheet.create({
     },
     containerIos: {
         flex: 1,
-        paddingTop: 122,
+        paddingTop: 100,
         backgroundColor: GlobalStyles.pagBackground,
         alignItems: 'center',
         fontFamily: GlobalStyles.baseFont,
@@ -106,11 +106,13 @@ export const signupStyles = StyleSheet.create({
         width: 345,
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        alignItems: 'stretch',
+
     },
     textLinkLeft: {
         fontFamily: GlobalStyles.baseFont,
-        fontSize: 16,
+        fontSize: 14,
         marginTop: 16,
         color: GlobalStyles.grey500,
         textShadowOffset: { width: 3, height: 3 }, // X and Y offset (no offset)
@@ -119,6 +121,5 @@ export const signupStyles = StyleSheet.create({
     },
     textLink: {
         color: GlobalStyles.secondaryColor,
-        width: 100
     }
 })
