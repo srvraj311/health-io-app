@@ -65,76 +65,88 @@ const Signup = ({ route }: SignupProps): JSX.Element => {
 
     return (
 
-        <KeyboardAvoidingView behavior='padding' style={signupStyles.keyboardViewContainer}>
-            <View
-                style={
-                    getContainerStyle()
-                }>
-                {
-                    // When user exists
-                    isUserExists && (
-                        <React.Fragment>
-                            <Image style={signupStyles.image} source={
-                                require('../../../assets/images/icon.png')
-                            } />
-                            <HeadingTexts
-                                text1='Welcome to'
-                                text2='Health.IO' ></HeadingTexts>
-                            <Text
-                                style={signupStyles.subHeader}>The right choice for health care needs</Text>
-                            <TextInput
-                                onChangeText={val => setEmail(val)}
-                                secureTextEntry={true}
-                                placeholderTextColor={GlobalStyles.grey500}
-                                placeholder='Enter your password' style={signupStyles.input} />
-                            <PrimaryButton
-                                title='Login'
-                                onPress={() => { onLoginPressed(email) }}></PrimaryButton>
-                            {/* <View style={signupStyles.textLinkContainer}>
+        <ScrollView
+            contentContainerStyle={[signupStyles.scrollView]}
+            automaticallyAdjustKeyboardInsets={true}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps='never'
+            keyboardDismissMode='interactive'
+            bounces={false}
+        >
+            <KeyboardAvoidingView
+                enabled
+                contentContainerStyle={{ height: 'auto', }}
+                // behavior='position'
+                behavior={Platform.OS === "ios" ? "height" : "height"}
+
+                style={signupStyles.keyboardViewContainer}>
+                <View
+                    style={
+                        getContainerStyle()
+                    }>
+                    {
+                        // When user exists
+                        isUserExists && (
+                            <React.Fragment>
+                                <Image style={signupStyles.image} source={
+                                    require('../../../assets/images/icon.png')
+                                } />
+                                <HeadingTexts
+                                    text1='Welcome to'
+                                    text2='Health.IO' ></HeadingTexts>
                                 <Text
-                                    style={signupStyles.textLinkLeft}> Entered wrong Email ?</Text>
-                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> &nbsp; Update Email </Text>
-                            </View> */}
-                            <View style={signupStyles.textLinkContainer}>
-                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Forgot Password ?</Text>
-                                <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Change Email</Text>
-                            </View>
+                                    style={signupStyles.subHeader}>The right choice for health care needs</Text>
+                                <TextInput
+                                    onChangeText={val => setEmail(val)}
+                                    secureTextEntry={true}
+                                    placeholderTextColor={GlobalStyles.grey500}
+                                    placeholder='Enter your password' style={signupStyles.input} />
+                                <PrimaryButton
+                                    title='Login'
+                                    onPress={() => { onLoginPressed(email) }}></PrimaryButton>
+                                <View style={signupStyles.textLinkContainer}>
+                                    <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Forgot Password ?</Text>
+                                    <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Change Email</Text>
+                                </View>
 
-                        </React.Fragment>
-                    )
+                            </React.Fragment>
+                        )
 
-                }
-                {
-                    // When user is new
-                    !isUserExists && (
-                        <React.Fragment>
-                            <View style={signupStyles.borderPrimary} ></View>
-                            <LargeHeadingTexts
-                                text1='Set your'
-                                text2='Password' ></LargeHeadingTexts>
-                            <Text style={signupStyles.subHeader}>It must have 8+ characters, a lower and upper case letter, a number and a symbol. </Text>
-                            <TextInput
-                                // onChangeText={val => setEmail(val)}
-                                secureTextEntry={true}
-                                placeholderTextColor={GlobalStyles.grey500}
-                                placeholder='Enter new password' style={signupStyles.input} />
-                            <TextInput
-                                secureTextEntry={true}
-                                // onChangeText={val => setEmail(val)}
-                                placeholderTextColor={GlobalStyles.grey500}
-                                placeholder='Re-enter new password' style={signupStyles.input} />
-                            <PrimaryButton
-                                title='Continue'
-                                onPress={() => { onCreateAccountPressed() }}></PrimaryButton>
-                        </React.Fragment>
-                    )
-                }
+                    }
+                    {
+                        // When user is new
+                        !isUserExists && (
+                            <React.Fragment>
+                                <View style={signupStyles.borderPrimary} ></View>
+                                <LargeHeadingTexts
+                                    text1='Set your'
+                                    text2='Password' ></LargeHeadingTexts>
+                                <Text style={[signupStyles.subHeader, { width: 345 }]}> It must have 8+ characters, a lower and upper case letter, a number and a symbol. </Text>
+                                <TextInput
+                                    // onChangeText={val => setEmail(val)}
+                                    secureTextEntry={true}
+                                    placeholderTextColor={GlobalStyles.grey500}
+                                    placeholder='Enter new password' style={signupStyles.input} />
+                                <TextInput
+                                    secureTextEntry={true}
+                                    // onChangeText={val => setEmail(val)}
+                                    placeholderTextColor={GlobalStyles.grey500}
+                                    placeholder='Re-enter new password' style={signupStyles.input} />
+                                <PrimaryButton
+                                    title='Continue'
+                                    onPress={() => { onCreateAccountPressed() }}></PrimaryButton>
+                            </React.Fragment>
+                        )
+                    }
 
-                <Image
-                    source={require('../../../assets/images/login_bg.png')}
-                    style={isIos ? signupStyles.bgImage : signupStyles.bgImageAndroid} />
-            </View>
-        </KeyboardAvoidingView>
+                </View>
+                <View style={signupStyles.footer}>
+                    <Image
+                        source={require('../../../assets/images/login_bg.png')}
+                        style={isIos ? signupStyles.bgImage : signupStyles.bgImageAndroid} />
+                </View>
+            </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 

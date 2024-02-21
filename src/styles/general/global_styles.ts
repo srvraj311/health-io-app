@@ -6,6 +6,7 @@ const GlobalStyles = {
     // Backgrounds Colours
     pagBackground: '#F3FAF5',
 
+    // pagBackground: '#E1F2E5',
     // Grey Colours
     white: '#FFFFFF',
     grey50: '#fafafa',
@@ -23,7 +24,7 @@ const GlobalStyles = {
 
 
     // Font Styles and sizes
-    baseFont: 'Be Vietnam Pro',
+    baseFont: 'BeVietnamPro-Regular',
 
 
     //

@@ -42,28 +42,49 @@ const Login = () => {
 
     return (
 
-        <KeyboardAvoidingView behavior='padding' style={loginStyles.keyboardViewContainer}>
-            <View style={isIos ? loginStyles.containerIos : loginStyles.containerAndoroid}>
-                <Image style={loginStyles.image} source={
-                    require('../../../assets/images/icon.png')
-                } />
-                <HeadingTexts
-                    text1='Welcome to'
-                    text2='Health.IO' ></HeadingTexts>
-                <Text
-                    style={loginStyles.subHeader}>The right choice for health care needs</Text>
-                <TextInput
-                    onChangeText={val => setEmail(val)}
-                    placeholderTextColor={GlobalStyles.grey500}
-                    placeholder='Enter your email' style={loginStyles.input} />
-                <PrimaryButton
-                    title='Continue'
-                    onPress={() => { onContinuePressed(email) }}></PrimaryButton>
-                <Image
-                    source={require('../../../assets/images/login_bg.png')}
-                    style={isIos ? loginStyles.bgImage : loginStyles.bgImageAndroid} />
-            </View>
-        </KeyboardAvoidingView>
+        <ScrollView
+            contentContainerStyle={[loginStyles.scrollView]}
+            automaticallyAdjustKeyboardInsets={true}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps='never'
+            keyboardDismissMode='interactive'
+            bounces={false}
+        >
+            <KeyboardAvoidingView
+                enabled
+                contentContainerStyle={{ height: 'auto' }}
+                // behavior='padding'
+                behavior={Platform.OS === "ios" ? "height" : "height"}
+                style={loginStyles.keyboardViewContainer}
+            >
+                <View style={[loginStyles.body, isIos ? loginStyles.containerIos : loginStyles.containerAndoroid]}>
+                    <Image style={loginStyles.image} source={
+                        require('../../../assets/images/icon.png')
+                    } />
+                    <HeadingTexts
+                        text1='Welcome to'
+                        text2='Health.IO' ></HeadingTexts>
+                    <Text
+                        style={loginStyles.subHeader}>The right choice for health care needs</Text>
+                    <TextInput
+                        onChangeText={val => setEmail(val)}
+                        placeholderTextColor={GlobalStyles.grey500}
+                        placeholder='Enter your email' style={loginStyles.input} />
+                    <View >
+                        <PrimaryButton
+                            title='Continue'
+                            onPress={() => { onContinuePressed(email) }}></PrimaryButton>
+                    </View>
+                </View>
+
+                <View style={loginStyles.footer}>
+
+                    <Image style={loginStyles.bgImage}
+                        source={require('../../../assets/images/login_bg.png')}
+                    />
+                </View>
+            </KeyboardAvoidingView>
+        </ScrollView >
     )
 }
 

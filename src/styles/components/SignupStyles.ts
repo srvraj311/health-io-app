@@ -15,6 +15,13 @@ export const signupNavigationOptions = {
 }
 
 export const signupStyles = StyleSheet.create({
+    scrollView: {
+        maxHeight: 1080,
+        flexGrow: 1,
+        justifyContent: 'space-between',
+        backgroundColor: GlobalStyles.pagBackground,
+        height: 'auto'
+    },
     header: {
         fontFamily: GlobalStyles.baseFont,
         fontSize: 24,
@@ -30,9 +37,12 @@ export const signupStyles = StyleSheet.create({
     },
     keyboardViewContainer: {
         flex: 1,
-        justifyContent: 'center',
         backgroundColor: GlobalStyles.pagBackground,
-        alignItems: 'center'
+        alignItems: 'center',
+        flexGrow: 1,
+        justifyContent: 'space-between',
+        width: '100%',
+        height: 'auto'
     },
     containerNonHeader: {
         flex: 1,
@@ -61,11 +71,11 @@ export const signupStyles = StyleSheet.create({
         resizeMode: 'cover',
     },
     subHeader: {
-        width: 345,
         fontFamily: GlobalStyles.baseFont,
         fontSize: 16,
         marginTop: 16,
-        color: GlobalStyles.grey500
+        color: GlobalStyles.grey500,
+
     },
     input: {
         width: 345,
@@ -121,5 +131,11 @@ export const signupStyles = StyleSheet.create({
     },
     textLink: {
         color: GlobalStyles.secondaryColor,
-    }
+    },
+    footer: {
+        flex: 1,
+        zIndex: -1,
+        width: '100%',
+        alignItems: 'center',
+    },
 })

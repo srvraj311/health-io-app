@@ -2,24 +2,27 @@ import { StyleSheet } from "react-native";
 import GlobalStyles from "../general/global_styles";
 
 export const loginStyles = StyleSheet.create({
+    scrollView: {
+        maxHeight: 1080,
+        flexGrow: 1,
+        justifyContent: 'space-between',
+        backgroundColor: GlobalStyles.pagBackground,
+        height: 'auto'
+    },
     keyboardViewContainer: {
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: GlobalStyles.pagBackground,
-        alignItems: 'center'
+        alignItems: 'center',
+        fontFamily: GlobalStyles.baseFont,
+        flexDirection: 'column',
+        flexGrow: 1,
+        justifyContent: 'space-between',
+        width: '100%',
+        height: 'auto'
     },
     containerIos: {
-        flex: 1,
-        paddingTop: 122,
-        backgroundColor: GlobalStyles.pagBackground,
-        alignItems: 'center',
-        fontFamily: GlobalStyles.baseFont,
+        paddingTop: 102,
     },
     containerAndoroid: {
-        flex: 1,
-        backgroundColor: GlobalStyles.pagBackground,
-        alignItems: 'center',
-        fontFamily: GlobalStyles.baseFont,
         paddingTop: 70,
     },
     image: {
@@ -46,20 +49,23 @@ export const loginStyles = StyleSheet.create({
         fontSize: 16,
         color: GlobalStyles.grey700
     },
+    body: {
+        flex: 1,
+        alignItems: 'center',
+        fontFamily: GlobalStyles.baseFont,
+    },
+    footer: {
+        flex: 1,
+        zIndex: -1,
+        width: '100%',
+        alignItems: 'center',
+    },
     bgImage: {
         resizeMode: 'cover',
         width: '100%',
         height: 270,
         position: 'absolute',
         bottom: 0,
-        zIndex: -1
+        zIndex: -1,
     },
-    bgImageAndroid: {
-        resizeMode: 'cover',
-        width: '100%',
-        height: 270,
-        position: 'absolute',
-        bottom: 0,
-        zIndex: -1
-    }
 })

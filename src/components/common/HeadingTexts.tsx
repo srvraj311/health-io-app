@@ -4,7 +4,7 @@ import GlobalStyles from '../../styles/general/global_styles'
 
 const HeadingTexts = ({ text1, text2 }: { text1: string, text2: string }): JSX.Element => {
     return (
-        <View style={headingTextStyles.headingsConrtainer}>
+        <View style={headingTextStyles.headingsContainer}>
             <Text style={headingTextStyles.headings} >{text1}</Text>
             <Text style={[headingTextStyles.headings, headingTextStyles.primary]} > {text2}</Text>
         </View >
@@ -12,11 +12,12 @@ const HeadingTexts = ({ text1, text2 }: { text1: string, text2: string }): JSX.E
 }
 
 const headingTextStyles = StyleSheet.create({
-    headingsConrtainer: {
+    headingsContainer: {
         marginTop: 32,
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        fontFamily: GlobalStyles.baseFont,
     },
     headings: {
         fontFamily: GlobalStyles.baseFont,
