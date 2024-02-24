@@ -32,11 +32,16 @@ function makeRequest<T>(
     config?: AxiosConfig
 ): Promise<ApiResponse> {
     let cnf: AxiosConfig = {
+        ...config,
         headers: {
+            ...config?.headers,
             'Content-Type': 'application/json',
         }
     }
     console.log('Payload : ' + JSON.stringify(data));
+    if (config) {
+        console.log(config)
+    }
     return axios({
         method,
         url: `${BASE_URL}${url}`,

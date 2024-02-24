@@ -1,5 +1,5 @@
 export class Constants {
-    static BASE_URL = "http://192.168.31.103:8080/api/v1"
+    static BASE_URL = "http://192.168.0.103:8080/api/v1"
     static API_KEY = ""
 }
 

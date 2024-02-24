@@ -2,10 +2,10 @@ import { View, Text, ImageComponent, Image, TextInput, Alert, KeyboardAvoidingVi
 import React, { useEffect, useState } from 'react'
 import HeadingTexts from '../../../components/common/HeadingTexts'
 import PrimaryButton from '../../../components/buttons/PrimaryButton'
-import Svg from 'react-native-svg';
+import Svg, { err } from 'react-native-svg';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import GlobalStyles from '../../../styles/general/global_styles'
-import { validateEmailWithApi } from '../../../service/auth/authService'
+import { loginUser, saveTokenToStorage, validateEmailWithApi } from '../../../service/auth/authService'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../../navigation/navigation'
@@ -13,13 +13,23 @@ import Login from '../Login/Login'
 import { signupNavigationOptions, signupStyles } from '../../../styles/components/SignupStyles'
 import LargeHeadingTexts from '../../../components/common/LargeHeadingTexts';
 import HeaderBackButton from '../../../components/buttons/HeaderBackButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch, RootState } from '../../../redux/reducers/user/userStore';
+import { login, setEmail, setIsCheckingLogin, setToken, setUser } from '../../../redux/reducers/user/userSlice';
+import LottieView from 'lottie-react-native';
 
 type SignupProps = NativeStackScreenProps<RootStackParamList, 'Signup'>
 
 const Signup = ({ route }: SignupProps): JSX.Element => {
-    const [email, setEmail]: [string, React.Dispatch<string>] = useState(route.params.email);
+    const [email, setStateEmail]: [string, React.Dispatch<string>] = useState(route.params.email);
     const [isUserExists, setIsUserExists]: [boolean, React.Dispatch<boolean>] = useState(route.params.isUserExists);
+    const [password, setPassword]: [string, React.Dispatch<string>] = useState('');
     const isIos = Platform.OS === 'ios';
+    // How we can get the state
+    const user = useSelector((state: RootState) => state.user);
+
+    // How we can call the reducers
+    const dispatch = useDispatch<AppDispatch>();
 
     // setIsUserExists(false)
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
@@ -60,7 +70,28 @@ const Signup = ({ route }: SignupProps): JSX.Element => {
     }
 
     const onLoginPressed = (email: string) => {
-
+        dispatch(setIsCheckingLogin(true));
+        loginUser(email, password)
+            ?.then((response: any) => {
+                if (response.status === 'OK') {
+                    if (response?.body?.token) {
+                        console.log(response?.body?.token)
+                        saveTokenToStorage(response?.body?.token);
+                        // Update all states in Redux stores
+                        dispatch(login());
+                        dispatch(setEmail(email));
+                        navigation.reset({ index: 0, routes: [{ name: 'Home', params: { token: response?.body?.token } }] });
+                    }
+                }
+            })?.catch((error) => {
+                if (error.status === 'BadCredentialsException') {
+                    Alert.alert("The password you entered is incorrect");
+                } else if (error.status === 'BadRequestException') {
+                    Alert.alert(error.message);
+                }
+            }).finally(() => {
+                dispatch(setIsCheckingLogin(false));
+            })
     }
 
     return (
@@ -97,18 +128,19 @@ const Signup = ({ route }: SignupProps): JSX.Element => {
                                 <Text
                                     style={signupStyles.subHeader}>The right choice for health care needs</Text>
                                 <TextInput
-                                    onChangeText={val => setEmail(val)}
+                                    onChangeText={val => setPassword(val)}
                                     secureTextEntry={true}
                                     placeholderTextColor={GlobalStyles.grey500}
+
                                     placeholder='Enter your password' style={signupStyles.input} />
                                 <PrimaryButton
                                     title='Login'
+                                    isLoadingState={user.isCheckingLogin}
                                     onPress={() => { onLoginPressed(email) }}></PrimaryButton>
                                 <View style={signupStyles.textLinkContainer}>
                                     <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Forgot Password ?</Text>
                                     <Text style={[signupStyles.textLinkLeft, signupStyles.textLink]} onPress={() => navigation.navigate('Login')}> Change Email</Text>
                                 </View>
-
                             </React.Fragment>
                         )
 

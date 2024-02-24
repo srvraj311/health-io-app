@@ -16,10 +16,13 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const isIos = Platform.OS === 'ios';
+    const [isLoading, setIsLoading] = useState(false);
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
     const onContinuePressed = (email: string) => {
+        setIsLoading(true);
         validateEmailWithApi(email)
             ?.then((response) => {
+                setIsLoading(false);
                 if (response.status === 'OK') {
                     navigation.push('Signup', {
                         email: email,
@@ -28,6 +31,7 @@ const Login = () => {
                 }
             })
             ?.catch((error) => {
+                setIsLoading(false);
                 if (error.status === 'UsernameNotFoundException') {
                     // Alert.alert("Email Does not exist Exist")
                     navigation.push('Signup', {
@@ -72,6 +76,7 @@ const Login = () => {
                         placeholder='Enter your email' style={loginStyles.input} />
                     <View >
                         <PrimaryButton
+                            isLoadingState={isLoading}
                             title='Continue'
                             onPress={() => { onContinuePressed(email) }}></PrimaryButton>
                     </View>

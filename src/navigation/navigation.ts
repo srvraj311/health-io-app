@@ -1,3 +1,6 @@
+import { User } from "../models/User";
+import SplashScreen from '../screens/SplashScreen';
+
 export type RootStackParamList = {
 
     Login: undefined;
@@ -5,6 +8,9 @@ export type RootStackParamList = {
         email: string;
         isUserExists: boolean;
     }
-    Home: undefined;
+    Home: {
+        token: string
+    },
     Details: { userId: string };
+    SplashScreen: undefined
 };

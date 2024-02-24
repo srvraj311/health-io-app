@@ -1,14 +1,16 @@
-import { View, Text, TouchableOpacity, StyleSheet, useColorScheme } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, useColorScheme, ProgressBarAndroidComponent } from 'react-native'
 import React, { useState } from 'react'
 import GlobalStyles from '../../styles/general/global_styles'
+import { useSelector, useDispatch } from 'react-redux'
+import { AppDispatch, RootState } from '../../redux/reducers/user/userStore'
+import LottieView from 'lottie-react-native'
 
 const PrimaryButton = ({
-    title, onPress, height, width
+    title, onPress, height, width, isLoadingState
 }: {
-    title: string, onPress: () => any, height?: string, width?: string
+    title: string, onPress: () => any, height?: string, width?: string, isLoadingState?: boolean
 }) => {
     const [isDarkMode, setItsDarkMode] = useState(useColorScheme() === 'dark');
-
     if (height) {
         primaryButtonStyle.button.height = Number(height)
     }
@@ -20,9 +22,11 @@ const PrimaryButton = ({
 
     return (
         <TouchableOpacity activeOpacity={0.9} onPress={() => onPress()} style={
-            primaryButtonStyle.button
+            [primaryButtonStyle.button, !isLoadingState ? primaryButtonStyle.buttonPrimary : primaryButtonStyle.buttonLight]
         } >
-            <Text style={primaryButtonStyle.buttontext} >{title}</Text>
+            {isLoadingState ?
+                <LottieView style={{ width: 150, height: 100, zIndex: 3 }} source={require('../../assets/animations/loading.json')} autoPlay loop />
+                : <Text style={primaryButtonStyle.buttontext} >{title}</Text>}
         </TouchableOpacity>
     )
 }
@@ -30,7 +34,6 @@ const PrimaryButton = ({
 
 const primaryButtonStyle = StyleSheet.create({
     button: {
-        backgroundColor: GlobalStyles.primaryColour,
         height: 52,
         width: 345,
         justifyContent: 'center',
@@ -39,6 +42,14 @@ const primaryButtonStyle = StyleSheet.create({
         borderRadius: 8,
         marginTop: 32,
         zIndex: 2
+    },
+    buttonLight: {
+        backgroundColor: GlobalStyles.grey100,
+        borderWidth: 1,
+        borderColor: GlobalStyles.primaryColour
+    },
+    buttonPrimary: {
+        backgroundColor: GlobalStyles.primaryColour,
     },
     buttontext: {
         color: GlobalStyles.white,

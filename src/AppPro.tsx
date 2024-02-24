@@ -21,10 +21,6 @@ function AppPro(): JSX.Element {
     // How we can call the reducers
     const dispatch = useDispatch<AppDispatch>();
 
-
-
-
-
     return (
         <SafeAreaView style={styles.container}>
 

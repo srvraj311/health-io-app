@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -11,8 +11,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AppPro from './AppPro';
-import { Provider } from 'react-redux';
-import { userStore } from './redux/reducers/user/userStore';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState, userStore } from './redux/reducers/user/userStore';
 
 // Scereens
 import Home from './screens/home/Home';
@@ -28,6 +28,9 @@ import Login from './screens/auth/Login/Login';
 import Signup from './screens/auth/Signup/Signup';
 import GlobalStyles from './styles/general/global_styles';
 import { signupNavigationOptions } from './styles/components/SignupStyles';
+import { getTokenFromStorage } from './service/auth/authService';
+import { isLoggedInAsync } from './redux/reducers/user/userSlice';
+import SplashScreen from './screens/SplashScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -35,7 +38,12 @@ function App(): JSX.Element {
   return (
     <Provider store={userStore}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="SplashScreen">
+          <Stack.Screen
+            name="SplashScreen"
+            component={SplashScreen}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen
             name="Login"
             component={Login}
