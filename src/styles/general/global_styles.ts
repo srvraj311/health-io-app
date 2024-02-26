@@ -1,7 +1,17 @@
+import { DefaultTheme } from "react-native-paper";
+
 const GlobalStyles = {
     // Primary Colours
     primaryColour: '#02B875',
     secondaryColor: '#1F274A',
+
+    // Warn, success, error
+    warn: '#E2B93B',
+    success: '#02B875',
+    error: '#EB5757',
+
+    // Input Background
+    inputBackground: '#ECF8F1',
 
     // Backgrounds Colours
     pagBackground: '#F3FAF5',
@@ -28,6 +38,15 @@ const GlobalStyles = {
 
 
     //
+
+    theme: {
+        ...DefaultTheme,
+        colors: {
+            ...DefaultTheme.colors,
+            primary: '#a1a1aa',
+            secondary: '#1F274A',
+        }
+    }
 }
 
 

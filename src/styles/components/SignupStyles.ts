@@ -75,20 +75,6 @@ export const signupStyles = StyleSheet.create({
         fontSize: 16,
         marginTop: 16,
         color: GlobalStyles.grey500,
-
-    },
-    input: {
-        width: 345,
-        height: 56,
-        marginTop: 32,
-        borderWidth: 1,
-        borderColor: GlobalStyles.grey300,
-        padding: 10,
-        borderRadius: 5,
-        backgroundColor: GlobalStyles.grey100,
-        fontFamily: GlobalStyles.baseFont,
-        fontSize: 16,
-        color: GlobalStyles.black
     },
     bgImage: {
         resizeMode: 'cover',

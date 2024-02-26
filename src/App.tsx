@@ -31,41 +31,60 @@ import { signupNavigationOptions } from './styles/components/SignupStyles';
 import { getTokenFromStorage } from './service/auth/authService';
 import { isLoggedInAsync } from './redux/reducers/user/userSlice';
 import SplashScreen from './screens/SplashScreen';
+import { PaperProvider } from 'react-native-paper';
+import FinishSignup from './screens/auth/Signup/FinishSignup';
+import ForgotPassword from './screens/auth/Login/ForgotPassword';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): JSX.Element {
   return (
     <Provider store={userStore}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="SplashScreen">
-          <Stack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Signup"
-            component={Signup}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              title: 'Home Screen',
-            }}
-          />
-          <Stack.Screen name="Details" component={Details} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <PaperProvider theme={GlobalStyles.theme}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="SplashScreen">
+            <Stack.Screen
+              name="SplashScreen"
+              component={SplashScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name='ForgotPassword'
+              component={ForgotPassword}
+              options={{
+                headerShown: false
+              }}
+            />
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Signup"
+              component={Signup}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name='FinishSignup'
+              component={FinishSignup}
+              options={{
+                headerShown: false
+              }}
+            />
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                title: 'Home Screen',
+              }}
+            />
+            <Stack.Screen name="Details" component={Details} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 }

@@ -36,6 +36,9 @@ function makeRequest<T>(
         headers: {
             ...config?.headers,
             'Content-Type': 'application/json',
+        },
+        params: {
+            ...config?.params
         }
     }
     console.log('Payload : ' + JSON.stringify(data));
@@ -49,17 +52,26 @@ function makeRequest<T>(
         ...cnf
     })
         .then((response) => {
-            console.log('Response : ' + JSON.stringify(response.data));
-            return response.data
+            console.log('Response : ' + JSON.stringify(response?.data));
+            return response?.data
         })
         .catch((error) => {
-            if (error.response.data.error.message) {
+            console.log(JSON.stringify(error.message))
+            if (error?.response.data.error.message) {
                 console.log('Known Error : ' + JSON.stringify(error.response.data));
                 console.log(error.response.data);
                 // Alert.alert(error.response.data.error.message);
                 throw error.response.data.error; // Re-throw for caller handling
                 return;
             }
+
+            if (error?.message) {
+                console.log('Unknown Error : ' + JSON.stringify(error));
+                // Alert.alert(error.message);
+                throw error; // Re-throw for caller handling
+                return;
+            }
+
             console.log('Unknown Error : ' + JSON.stringify(error));
             // Undefined error
             Alert.alert(error);

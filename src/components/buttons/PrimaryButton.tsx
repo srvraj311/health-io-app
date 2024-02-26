@@ -23,9 +23,11 @@ const PrimaryButton = ({
     return (
         <TouchableOpacity activeOpacity={0.9} onPress={() => onPress()} style={
             [primaryButtonStyle.button, !isLoadingState ? primaryButtonStyle.buttonPrimary : primaryButtonStyle.buttonLight]
-        } >
+        }
+            disabled={isLoadingState}
+        >
             {isLoadingState ?
-                <LottieView style={{ width: 150, height: 100, zIndex: 3 }} source={require('../../assets/animations/loading.json')} autoPlay loop />
+                <LottieView style={{ width: 150, height: 100, zIndex: 3, marginTop: 4 }} source={require('../../assets/animations/loading.json')} autoPlay loop />
                 : <Text style={primaryButtonStyle.buttontext} >{title}</Text>}
         </TouchableOpacity>
     )

@@ -10,6 +10,7 @@ import { validateEmailWithApi } from '../../../service/auth/authService'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../../navigation/navigation'
+import PrimaryInput from '../../../components/input/PrimaryInput'
 
 
 const Login = () => {
@@ -18,7 +19,14 @@ const Login = () => {
     const isIos = Platform.OS === 'ios';
     const [isLoading, setIsLoading] = useState(false);
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+    const [error, setError] = useState('');
+    const isError = error && error.length > 0;
     const onContinuePressed = (email: string) => {
+        if (!email) {
+            setError('Please enter a valid email');
+            return
+        }
+
         setIsLoading(true);
         validateEmailWithApi(email)
             ?.then((response) => {
@@ -38,10 +46,15 @@ const Login = () => {
                         email: email,
                         isUserExists: false
                     })
-                } else if (error.status === 'BadRequestException') {
-                    Alert.alert(error.message);
+                } else {
+                    setError(error.message);
                 }
             })
+    }
+
+    const onEmailTextChange = (text: string) => {
+        setEmail((prev) => text);
+        setError((prev) => '');
     }
 
     return (
@@ -70,10 +83,11 @@ const Login = () => {
                         text2='Health.IO' ></HeadingTexts>
                     <Text
                         style={loginStyles.subHeader}>The right choice for health care needs</Text>
-                    <TextInput
-                        onChangeText={val => setEmail(val)}
-                        placeholderTextColor={GlobalStyles.grey500}
-                        placeholder='Enter your email' style={loginStyles.input} />
+                    <PrimaryInput
+                        onChangeText={val => onEmailTextChange(val)}
+                        inputMode='email'
+                        errorText={error}
+                        placeholder='Enter your email' />
                     <View >
                         <PrimaryButton
                             isLoadingState={isLoading}

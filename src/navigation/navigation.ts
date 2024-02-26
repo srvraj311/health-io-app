@@ -12,5 +12,12 @@ export type RootStackParamList = {
         token: string
     },
     Details: { userId: string };
-    SplashScreen: undefined
+    SplashScreen: undefined,
+    FinishSignup: {
+        email: string,
+        password: string
+    },
+    ForgotPassword: {
+        email: string
+    }
 };

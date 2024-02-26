@@ -27,7 +27,9 @@ const Home = (prop: Props) => {
     return (
         <View style={styles.container}>
             {user.isLoggedIn &&
-                <Text style={styles.smallText}>Logged in as {user?.user?.first_name + ' ' + user?.user?.last_name}</Text>}
+                <Text style={styles.smallText}>Logged in as {user?.user?.first_name + ' ' + user?.user?.last_name}
+                    {JSON.stringify(user?.user)}
+                </Text>}
             {user.isCheckingLogin &&
                 <Text style={styles.smallText}>Checking Login</Text>}
             <Button
