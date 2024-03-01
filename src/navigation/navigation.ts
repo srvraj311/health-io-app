@@ -11,7 +11,7 @@ export type RootStackParamList = {
     Home: {
         token: string
     },
-    Details: { userId: string };
+    Details: undefined;
     SplashScreen: undefined,
     FinishSignup: {
         email: string,

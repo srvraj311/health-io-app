@@ -11,6 +11,10 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../../navigation/navigation'
 import PrimaryInput from '../../../components/input/PrimaryInput'
+import { Snackbar } from 'react-native-paper'
+import { AppDispatch, RootState } from '../../../redux/reducers/user/userStore'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSnackBarVisible } from '../../../redux/reducers/ui/UiSlice'
 
 
 const Login = () => {
@@ -21,6 +25,8 @@ const Login = () => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
     const [error, setError] = useState('');
     const isError = error && error.length > 0;
+    const uiRedux = useSelector((state: RootState) => state.ui);
+    const dispatch = useDispatch<AppDispatch>();
     const onContinuePressed = (email: string) => {
         if (!email) {
             setError('Please enter a valid email');
@@ -47,7 +53,9 @@ const Login = () => {
                         isUserExists: false
                     })
                 } else {
+                    // TODO : Show error
                     setError(error.message);
+                    // dispatch(setSnackBarVisible({ visible: true, message: error.message }));
                 }
             })
     }
@@ -95,6 +103,11 @@ const Login = () => {
                             onPress={() => { onContinuePressed(email) }}></PrimaryButton>
                     </View>
                 </View>
+                <Snackbar
+                    onDismiss={() => { }}
+                    visible={uiRedux.snackBarVisible}>
+                    {uiRedux.snackBarMessage}
+                </Snackbar>
 
                 <View style={loginStyles.footer}>
 

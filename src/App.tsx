@@ -78,7 +78,7 @@ function App(): JSX.Element {
               name="Home"
               component={Home}
               options={{
-                title: 'Home Screen',
+                headerShown: false
               }}
             />
             <Stack.Screen name="Details" component={Details} />

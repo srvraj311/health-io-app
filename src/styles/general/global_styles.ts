@@ -1,9 +1,12 @@
+import { useColorScheme } from "react-native";
 import { DefaultTheme } from "react-native-paper";
 
+let isDark = false;
 const GlobalStyles = {
     // Primary Colours
     primaryColour: '#02B875',
     secondaryColor: '#1F274A',
+    cardBgColor: '#D3F2DC',
 
     // Warn, success, error
     warn: '#E2B93B',
@@ -14,7 +17,8 @@ const GlobalStyles = {
     inputBackground: '#ECF8F1',
 
     // Backgrounds Colours
-    pagBackground: '#F3FAF5',
+    pagBackground: '#fafafa',
+    pagBackgroundDark: '#09090b',
 
     // pagBackground: '#E1F2E5',
     // Grey Colours
