@@ -92,5 +92,5 @@ export const isLoggedInAsync = createAsyncThunk(
     }
 );
 
-export const { login, logout, setEmail, setUser, setIsCheckingLogin, setToken } = userSlice.actions;
+export const { login, logout, setEmail, setUser, setIsCheckingLogin } = userSlice.actions;
 export default userSlice.reducer;

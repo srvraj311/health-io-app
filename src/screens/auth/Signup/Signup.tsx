@@ -15,7 +15,7 @@ import LargeHeadingTexts from '../../../components/common/LargeHeadingTexts';
 import HeaderBackButton from '../../../components/buttons/HeaderBackButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../../redux/reducers/user/userStore';
-import { login, setEmail, setIsCheckingLogin, setToken, setUser } from '../../../redux/reducers/user/userSlice';
+import { login, setEmail, setIsCheckingLogin, setUser } from '../../../redux/reducers/user/userSlice';
 import LottieView from 'lottie-react-native';
 import PrimaryInput from '../../../components/input/PrimaryInput';
 import { Constants } from '../../../constants/Constants';

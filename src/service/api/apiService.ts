@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Constants } from '../../constants/Constants';
 import { Alert } from 'react-native';
+import { getTokenFromStorage } from '../auth/authService';
 
 const BASE_URL = Constants.BASE_URL;
 
@@ -25,38 +26,34 @@ interface ApiResponse {
     // Add other response properties as needed
 }
 
-function makeRequest<T>(
+async function makeRequest<T>(
     method: 'GET' | 'POST' | 'PUT' | 'DELETE', // Add other supported methods
     url: string,
     data?: any, // Use specific types for data depending on the API endpoint
     config?: AxiosConfig
 ): Promise<ApiResponse> {
-    let cnf: AxiosConfig = {
-        ...config,
-        headers: {
-            ...config?.headers,
-            'Content-Type': 'application/json',
-        },
-        params: {
-            ...config?.params
-        }
+    let token = await getTokenFromStorage();
+    let finalConfig;
+    if (token) {
+        finalConfig = getAuthConfig(token, config);
+    } else {
+        finalConfig = getNormalConfig(config);
     }
+
     console.log('Payload : ' + JSON.stringify(data));
-    if (config) {
-        console.log(config)
-    }
+    console.log('Config : ' + JSON.stringify(finalConfig));
+
     return axios({
         method,
         url: `${BASE_URL}${url}`,
         data,
-        ...cnf
+        ...finalConfig
     })
         .then((response) => {
             console.log('Response : ' + JSON.stringify(response?.data));
             return response?.data
         })
         .catch((error) => {
-            console.log(JSON.stringify(error.message))
             if (error?.response.data.error.message) {
                 console.log('Known Error : ' + JSON.stringify(error.response.data));
                 console.log(error.response.data);
@@ -77,6 +74,33 @@ function makeRequest<T>(
             Alert.alert(error);
             throw new Error(error); // Re-throw for caller handling
         });
+}
+
+function getAuthConfig(token: string, config?: AxiosConfig): AxiosConfig {
+    return {
+        ...config,
+        headers: {
+            'Content-Type': 'application/json',
+            ...config?.headers,
+            Authorization: `Bearer ${token}`,
+        },
+        params: {
+            ...config?.params
+        }
+    };
+}
+
+function getNormalConfig(config?: AxiosConfig): AxiosConfig {
+    return {
+        ...config,
+        headers: {
+            'Content-Type': 'application/json',
+            ...config?.headers,
+        },
+        params: {
+            ...config?.params
+        }
+    };
 }
 
 
