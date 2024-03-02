@@ -35,22 +35,22 @@ const HomeScreen = (prop: Props) => {
                         <PrimaryCardIcon
                             icon={require('../../assets/icons/hospital.png')}
                             onPress={() => navigation.jumpTo('Hospitals')}
-                            text='Hospital' />
+                            text='Hospitals' />
                         <PrimaryCardIcon
-                            icon={require('../../assets/icons/hospital.png')}
+                            icon={require('../../assets/icons/clinics.png')}
                             onPress={() => { }}
-                            text='Clinic' />
+                            text='Clinics' />
                     </View>
 
                     <View style={homeStyles.horizontal}>
                         <PrimaryCardIcon
-                            icon={require('../../assets/icons/hospital.png')}
+                            icon={require('../../assets/icons/pharmacy.png')}
                             onPress={() => { }}
-                            text='Hospital' />
+                            text='Pharmacy' />
                         <PrimaryCardIcon
-                            icon={require('../../assets/icons/hospital.png')}
+                            icon={require('../../assets/icons/laboratory.png')}
                             onPress={() => { }}
-                            text='Clinic' />
+                            text='Laboratory' />
                     </View>
                 </View>
             </View>
