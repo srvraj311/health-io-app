@@ -6,14 +6,16 @@ export const hStyles = StyleSheet.create({
         flex: 1,
         padding: 24,
         backgroundColor: GlobalStyles.pagBackground,
+        zIndex: -1
     },
     contentContainer: {
+        zIndex: -1,
         flex: 1,
         alignItems: 'center',
         backgroundColor: GlobalStyles.grey100
     },
     bottomSheet: {
-
+        elevation: 3,
     },
     header: {
         marginTop: 16,

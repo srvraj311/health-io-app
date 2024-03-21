@@ -123,6 +123,10 @@ const signupRequest = (userDetails: UserDetails) => {
     return post(ApiEndpoints.SIGNUP, userDetails)
 }
 
+const getCityNameFromApi = () => {
+    return get(ApiEndpoints.GET_CITIES)
+}
+
 export {
     validateEmailWithApi,
     loginUser,
@@ -134,5 +138,6 @@ export {
     sendVerificationMail,
     verifyOtpForSignup,
     signupRequest,
-    updatePassword
+    updatePassword,
+    getCityNameFromApi
 }

@@ -9,6 +9,11 @@ import { hStyles } from '../../../styles/components/HospitalStyles';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import PrimaryInput from '../../../components/input/PrimaryInput';
 import { Chip } from 'react-native-paper';
+import GlobalStyles from '../../../styles/general/global_styles';
+import { Cities } from '../../../service/hospital/cities';
+import { List } from 'react-native-paper';
+import HospitalBottomSheet from './hospitalList/HospitalBottomSheet';
+import PrimaryInputWhite from '../../../components/input/PrimaryInputWhite';
 
 const HospitalList = () => {
 
@@ -40,38 +45,76 @@ const HospitalList = () => {
         console.log('handleSheetChanges', index);
     }, []);
 
+    const getCitySelector = () => {
+        return Object.entries(Cities)
+            .map(([state, cities]) => {
+                return <List.Accordion
+                    id={state}
+                    key={state}
+                    title={state}
+                >
+                    {cities.map((city) => {
+                        return <List.Item
+                            key={city}
+                            title={city}
+                            onPress={() => {
+                                setCityName(city);
+                                setIsCitySelected(true);
+                                bottomSheetRef.current?.close();
+                            }}
+                        />
+                    })}
+                </List.Accordion>
+            })
+    }
+
     if (!isCitySelected) {
-        bottomSheetRef.current?.close();
+        // bottomSheetRef.current?.close();
     }
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
+            <BottomSheet
+                ref={bottomSheetRef}
+                onChange={handleSheetChanges}
+                keyboardBehavior='fillParent'
+                index={0}
+                snapPoints={['8%', '40%', '50%', '60%', '80%', '90%']}
+                style={hStyles.bottomSheet}
+                handleIndicatorStyle={{ backgroundColor: GlobalStyles.grey400, width: 60, height: 6 }}
+                handleStyle={{ backgroundColor: GlobalStyles.grey100 }}
+            >
+                <BottomSheetView style={hStyles.contentContainer}>
+                    <HospitalBottomSheet bottomSheetRef={bottomSheetRef} />
+                </BottomSheetView>
+            </BottomSheet>
+
             <View style={hStyles.container}>
-                <BottomSheet
-                    detached
-                    ref={bottomSheetRef}
-                    onChange={handleSheetChanges}
-                    index={0}
-                    enablePanDownToClose
-                    snapPoints={['100%']}
-                    enableDynamicSizing
-                    style={hStyles.bottomSheet}
-                >
-                    <BottomSheetView style={hStyles.contentContainer}>
-                        <Text>Awesome 🎉</Text>
-                    </BottomSheetView>
-                </BottomSheet>
                 <View style={hStyles.header}>
-                    <PrimaryInput
+                    <PrimaryInputWhite
                         placeholder='Search Hospital'
                         onChangeText={(text) => {
                             setSearchText(text);
                         }}
                     />
-                    <View style={hStyles.filterContainer}>
-                        <Chip icon="information" onPress={() => console.log('Pressed')}>Example Chip</Chip>
-                        <Chip icon="information" onPress={() => console.log('Pressed')}>Example Chip</Chip>
-                        <Chip icon="information" onPress={() => console.log('Pressed')}>Example Chip</Chip>
-                    </View>
+                    <View style={{ marginTop: 40 }}></View>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+                    <Text> Heloo World </Text>
+
                 </View>
             </View>
 

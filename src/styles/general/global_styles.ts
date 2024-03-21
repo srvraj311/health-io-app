@@ -50,7 +50,7 @@ const GlobalStyles = {
             primary: '#a1a1aa',
             secondary: '#1F274A',
         }
-    }
+    },
 }
 
 

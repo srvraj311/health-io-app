@@ -6,7 +6,7 @@ import HeadingTexts from '../../../components/common/HeadingTexts'
 import PrimaryInput from '../../../components/input/PrimaryInput'
 import GlobalStyles from '../../../styles/general/global_styles'
 import LargeHeadingTexts from '../../../components/common/LargeHeadingTexts'
-import { saveTokenToStorage, sendVerificationMail, signupRequest, verifyOtpForSignup } from '../../../service/auth/authService'
+import { getCityNameFromApi, saveTokenToStorage, sendVerificationMail, signupRequest, verifyOtpForSignup } from '../../../service/auth/authService'
 import HeaderBackButton from '../../../components/buttons/HeaderBackButton'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
@@ -49,6 +49,9 @@ const FinishSignup = ({ navigation, route }: { navigation: any, route: { params:
         blood_group: 'a_negative',
         role: 'ROLE_USER',
     })
+    const [citiesNames, setCitiesNames] = useState([]);
+    const [selectedCity, setSelectedCity] = useState('');
+
     const [formError, setFormError] = useState({
         first_name: '',
         last_name: '',
@@ -96,12 +99,26 @@ const FinishSignup = ({ navigation, route }: { navigation: any, route: { params:
                 if (response.status === 'OK') {
                     setIsVerified(true);
                     setIsLoading(false);
+                    getCityNamesFromApi();
                 }
                 setIsLoading(false);
             })
             ?.catch((error) => {
                 setIsLoading(false);
                 setOtpError(error.message);
+            })
+    }
+
+    const getCityNamesFromApi = () => {
+        getCityNameFromApi()
+            ?.then((response: any) => {
+                if (response.status == 'OK') {
+                    setCitiesNames(val => response?.body?.cities);
+                }
+            })
+            ?.catch((error) => {
+                setCitiesNames([]);
+                Alert.alert(error.message)
             })
     }
 
@@ -214,13 +231,23 @@ const FinishSignup = ({ navigation, route }: { navigation: any, route: { params:
                                 errorText={formError.last_name}
                                 inputMode='text'
                                 placeholder='Last Name *' />
-                            <PrimaryInput
+                            {/* <PrimaryInput
                                 onChangeText={(val) => setUserDetails((prev) => {
                                     setFormError((prev) => ({ ...prev, city: '' }));
                                     return { ...prev, city: val }
                                 })}
                                 inputMode='text'
-                                placeholder='City' />
+                                placeholder='City' /> */}
+                            {/* <PrimaryDropdown
+                                list={citiesNames}
+                                label={'City'}
+                                value={userDetails.city}
+                                setValue={(val) => setUserDetails((prev) => {
+                                    setSelectedCity(val);
+                                    setFormError((prev) => ({ ...prev, city: '' }));
+                                    return { ...prev, city: val }
+                                })}
+                            /> */}
                             <PrimaryDropdown
                                 list={bloodGroupOptions}
                                 label='Blood Group'

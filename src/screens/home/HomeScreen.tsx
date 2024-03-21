@@ -6,11 +6,12 @@ import homeStyles from '../../styles/components/HomeStyles'
 import { HomeTabParamList } from './Home'
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/native'
+import { RootState } from '../../redux/reducers/user/userStore'
+import { useSelector } from 'react-redux'
 
-type Props = BottomTabNavigationProp<HomeTabParamList, 'HomeScreen'>;
-
-const HomeScreen = (prop: Props) => {
-    const navigation = useNavigation<Props>();
+const HomeScreen = () => {
+    const navigation = useNavigation<BottomTabNavigationProp<HomeTabParamList>>();
+    const user = useSelector((state: RootState) => state.user);
     return (
         <View style={homeStyles.container}>
             {/* Top Container */}
@@ -27,7 +28,7 @@ const HomeScreen = (prop: Props) => {
                         <Image style={homeStyles.icon} source={require('../../assets/icons/notification.png')} />
                     </TouchableOpacity>
                 </View>
-                <HeadingTextsHome text1='Welcome to' text2='health.io' />
+                <HeadingTextsHome text1={'Hey' + ' ' + user?.user?.first_name.substring(0, 15)} text2='Welcome to health.io' />
             </View>
             <View style={homeStyles.body}>
                 <View style={homeStyles.marginNegetative}>

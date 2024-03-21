@@ -19,6 +19,7 @@ import ClinicsList from './clinics/ClinicsList';
 import PharmacyList from './pharmacy/PharmacyList';
 import LaboratoryList from './labs/LaboratoryList';
 import GlobalStyles from '../../styles/general/global_styles';
+import { removeTokenFromStorage } from '../../service/auth/authService';
 
 const isIos = Platform.OS === 'ios';
 const styles = StyleSheet.create({
@@ -67,7 +68,12 @@ const Home = (prop: Props) => {
         } else {
             prop.navigation.replace('Login');
         }
-    }, [])
+
+        if (user.isLoggedIn && user.user === null) {
+            removeTokenFromStorage();
+            prop.navigation.replace('Login');
+        }
+    }, [user.isLoggedIn])
 
 
     return (
