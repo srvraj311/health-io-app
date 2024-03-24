@@ -37,6 +37,7 @@ const SelectCityComponent = (props: { bottomSheetRef: React.RefObject<BottomShee
         setCityExpanded((prev) => !prev);
     }
     const onSearchTextChange = (value: string) => {
+        bottomSheetRef.current?.snapToIndex(5)
         setSearchText(() => value);
         if (!value) {
             setSearchText(undefined as any)

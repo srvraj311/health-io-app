@@ -40,6 +40,7 @@ async function makeRequest<T>(
         finalConfig = getNormalConfig(config);
     }
 
+    console.log("Url : " + `${BASE_URL}${url}`)
     console.log('Payload : ' + JSON.stringify(data));
     console.log('Config : ' + JSON.stringify(finalConfig));
 

@@ -9,18 +9,17 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* health_io_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* health_io_appTests.m */; };
 		0B9927BF4FAC4E7DB301CADF /* BeVietnamPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F8ECD28E0524BA8B002427B /* BeVietnamPro-Bold.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-health_io_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-health_io_app.a */; };
 		0CE6A435F08B47359A2F8DD8 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58CFA6E7D3804211A4729797 /* OFL.txt */; };
 		0E394FE0718D42DC83AC19E1 /* BeVietnamPro-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE673FD5E0BC4373AC111FFD /* BeVietnamPro-ExtraBold.ttf */; };
 		11601CA2B4D5423C91243978 /* BeVietnamPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F8173E3D47E4DBB9D47FC3E /* BeVietnamPro-Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2C815EA19278FB480A6910B5 /* libPods-health_io_app-health_io_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4733F7A7FC2D83675429228A /* libPods-health_io_app-health_io_appTests.a */; };
 		59D7CA98B402492DB2D700C0 /* BeVietnamPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4566261C714045179BEB6FB9 /* BeVietnamPro-Black.ttf */; };
 		6198AF499ED943D1A026CAEE /* BeVietnamPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 415B45BF008F4F01B56002AD /* BeVietnamPro-ExtraLight.ttf */; };
 		65A21E13B135495F81B47ABF /* BeVietnamPro-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D7308D88D8B4FFEBAF6FE9E /* BeVietnamPro-BlackItalic.ttf */; };
 		71FB78607B8B442BBE7C10E0 /* BeVietnamPro-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D281D6D46A73466C8BE4E1A4 /* BeVietnamPro-SemiBoldItalic.ttf */; };
-		7699B88040F8A987B510C191 /* libPods-health_io_app-health_io_appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-health_io_app-health_io_appTests.a */; };
 		76C4EC803A7E435592D07D26 /* BeVietnamPro-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0496AB4B279A4CEC816313A5 /* BeVietnamPro-BoldItalic.ttf */; };
 		7D6E64C5ACF646CA94882D0C /* BeVietnamPro-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26D1E0B6CB834C0F9EC92334 /* BeVietnamPro-ExtraLightItalic.ttf */; };
 		7FFCD099C42B4112A0034526 /* BeVietnamPro-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60207015B3624328A1A773F7 /* BeVietnamPro-MediumItalic.ttf */; };
@@ -33,6 +32,7 @@
 		D81570B70EE94BCE8E87C735 /* BeVietnamPro-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 71213E17906642F1A67404CB /* BeVietnamPro-ThinItalic.ttf */; };
 		ED8C24861B5A4D3B81198D03 /* BeVietnamPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 521474AF4400422094DE64EC /* BeVietnamPro-Light.ttf */; };
 		F3E755A673F4475BA3B6C62F /* BeVietnamPro-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A26A37F59264011AD84CF56 /* BeVietnamPro-ExtraBoldItalic.ttf */; };
+		F42E3FC1B7153B953AD95756 /* libPods-health_io_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A42A3B4B2C95AE04DD79C0FD /* libPods-health_io_app.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,27 +57,27 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = health_io_app/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = health_io_app/main.m; sourceTree = "<group>"; };
 		1659BE8EC0384237A4FC23F3 /* BeVietnamPro-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Medium.ttf"; path = "../src/assets/fonts/BeVietnamPro-Medium.ttf"; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-health_io_app-health_io_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-health_io_app-health_io_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D1E0B6CB834C0F9EC92334 /* BeVietnamPro-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-ExtraLightItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		2F8ECD28E0524BA8B002427B /* BeVietnamPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Bold.ttf"; path = "../src/assets/fonts/BeVietnamPro-Bold.ttf"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-health_io_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app.debug.xcconfig"; path = "Target Support Files/Pods-health_io_app/Pods-health_io_app.debug.xcconfig"; sourceTree = "<group>"; };
 		415B45BF008F4F01B56002AD /* BeVietnamPro-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-ExtraLight.ttf"; path = "../src/assets/fonts/BeVietnamPro-ExtraLight.ttf"; sourceTree = "<group>"; };
 		4566261C714045179BEB6FB9 /* BeVietnamPro-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Black.ttf"; path = "../src/assets/fonts/BeVietnamPro-Black.ttf"; sourceTree = "<group>"; };
+		4733F7A7FC2D83675429228A /* libPods-health_io_app-health_io_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-health_io_app-health_io_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A26A37F59264011AD84CF56 /* BeVietnamPro-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4BCBD7C344865942C6747B4D /* Pods-health_io_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app.debug.xcconfig"; path = "Target Support Files/Pods-health_io_app/Pods-health_io_app.debug.xcconfig"; sourceTree = "<group>"; };
 		521474AF4400422094DE64EC /* BeVietnamPro-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Light.ttf"; path = "../src/assets/fonts/BeVietnamPro-Light.ttf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-health_io_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app.release.xcconfig"; path = "Target Support Files/Pods-health_io_app/Pods-health_io_app.release.xcconfig"; sourceTree = "<group>"; };
+		5771557A956F1978A7F15DDD /* Pods-health_io_app-health_io_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app-health_io_appTests.release.xcconfig"; path = "Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		58CFA6E7D3804211A4729797 /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../src/assets/fonts/OFL.txt; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-health_io_app-health_io_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app-health_io_appTests.debug.xcconfig"; path = "Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-health_io_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-health_io_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F88EF856D14A01C16E6A38C /* Pods-health_io_app-health_io_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app-health_io_appTests.debug.xcconfig"; path = "Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60207015B3624328A1A773F7 /* BeVietnamPro-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-MediumItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-MediumItalic.ttf"; sourceTree = "<group>"; };
 		71213E17906642F1A67404CB /* BeVietnamPro-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-ThinItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-ThinItalic.ttf"; sourceTree = "<group>"; };
 		7F8173E3D47E4DBB9D47FC3E /* BeVietnamPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Regular.ttf"; path = "../src/assets/fonts/BeVietnamPro-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = health_io_app/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-health_io_app-health_io_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app-health_io_appTests.release.xcconfig"; path = "Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D7308D88D8B4FFEBAF6FE9E /* BeVietnamPro-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-BlackItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-BlackItalic.ttf"; sourceTree = "<group>"; };
+		A42A3B4B2C95AE04DD79C0FD /* libPods-health_io_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-health_io_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AADA4620A94B289D2D3EF5 /* BeVietnamPro-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Italic.ttf"; path = "../src/assets/fonts/BeVietnamPro-Italic.ttf"; sourceTree = "<group>"; };
 		AE673FD5E0BC4373AC111FFD /* BeVietnamPro-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-ExtraBold.ttf"; path = "../src/assets/fonts/BeVietnamPro-ExtraBold.ttf"; sourceTree = "<group>"; };
 		D281D6D46A73466C8BE4E1A4 /* BeVietnamPro-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-SemiBoldItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		E439649CF384696D3442D668 /* Pods-health_io_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-health_io_app.release.xcconfig"; path = "Target Support Files/Pods-health_io_app/Pods-health_io_app.release.xcconfig"; sourceTree = "<group>"; };
 		E702E2CA058446DF8BED9F1A /* BeVietnamPro-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-Thin.ttf"; path = "../src/assets/fonts/BeVietnamPro-Thin.ttf"; sourceTree = "<group>"; };
 		ECDD11C91140476E95E0176E /* BeVietnamPro-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BeVietnamPro-LightItalic.ttf"; path = "../src/assets/fonts/BeVietnamPro-LightItalic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-health_io_app-health_io_appTests.a in Frameworks */,
+				2C815EA19278FB480A6910B5 /* libPods-health_io_app-health_io_appTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-health_io_app.a in Frameworks */,
+				F42E3FC1B7153B953AD95756 /* libPods-health_io_app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-health_io_app.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-health_io_app-health_io_appTests.a */,
+				A42A3B4B2C95AE04DD79C0FD /* libPods-health_io_app.a */,
+				4733F7A7FC2D83675429228A /* libPods-health_io_app-health_io_appTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,10 +187,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-health_io_app.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-health_io_app.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-health_io_app-health_io_appTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-health_io_app-health_io_appTests.release.xcconfig */,
+				4BCBD7C344865942C6747B4D /* Pods-health_io_app.debug.xcconfig */,
+				E439649CF384696D3442D668 /* Pods-health_io_app.release.xcconfig */,
+				5F88EF856D14A01C16E6A38C /* Pods-health_io_app-health_io_appTests.debug.xcconfig */,
+				5771557A956F1978A7F15DDD /* Pods-health_io_app-health_io_appTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -228,12 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "health_io_appTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				8E80C15F150C3D40316EEF47 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				2B8F7396EDBBE891B68AA0B9 /* [CP] Embed Pods Frameworks */,
+				6B183DB1A31149290A4A87C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,13 +249,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "health_io_app" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				3277D7BC57AC940E112EC92D /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				D68600D417514E20B93A6920 /* [CP] Embed Pods Frameworks */,
+				C4C46D935497C22859F27C88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -357,46 +357,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		2B8F7396EDBBE891B68AA0B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-health_io_app-health_io_appTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		3277D7BC57AC940E112EC92D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -418,24 +396,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		6B183DB1A31149290A4A87C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		8E80C15F150C3D40316EEF47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-health_io_app-health_io_appTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4C46D935497C22859F27C88 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -452,21 +452,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		D68600D417514E20B93A6920 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app-health_io_appTests/Pods-health_io_app-health_io_appTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-health_io_app/Pods-health_io_app-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -502,7 +502,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-health_io_app-health_io_appTests.debug.xcconfig */;
+			baseConfigurationReference = 5F88EF856D14A01C16E6A38C /* Pods-health_io_app-health_io_appTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -529,7 +529,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-health_io_app-health_io_appTests.release.xcconfig */;
+			baseConfigurationReference = 5771557A956F1978A7F15DDD /* Pods-health_io_app-health_io_appTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -553,7 +553,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-health_io_app.debug.xcconfig */;
+			baseConfigurationReference = 4BCBD7C344865942C6747B4D /* Pods-health_io_app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -581,7 +581,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-health_io_app.release.xcconfig */;
+			baseConfigurationReference = E439649CF384696D3442D668 /* Pods-health_io_app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

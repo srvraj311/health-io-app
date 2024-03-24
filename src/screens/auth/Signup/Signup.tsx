@@ -15,10 +15,11 @@ import LargeHeadingTexts from '../../../components/common/LargeHeadingTexts';
 import HeaderBackButton from '../../../components/buttons/HeaderBackButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../../redux/reducers/user/userStore';
-import { login, setEmail, setIsCheckingLogin, setUser } from '../../../redux/reducers/user/userSlice';
+import { isLoggedInAsync, login, setEmail, setIsCheckingLogin, setUser } from '../../../redux/reducers/user/userSlice';
 import LottieView from 'lottie-react-native';
 import PrimaryInput from '../../../components/input/PrimaryInput';
 import { Constants } from '../../../constants/Constants';
+import { tokens } from 'react-native-paper/lib/typescript/styles/themes/v3/tokens';
 
 type SignupProps = NativeStackScreenProps<RootStackParamList, 'Signup'>
 
@@ -81,9 +82,9 @@ const Signup = ({ route }: SignupProps): JSX.Element => {
                         console.log(response?.body?.token)
                         saveTokenToStorage(response?.body?.token);
                         // Update all states in Redux stores
-                        dispatch(login());
+                        dispatch(isLoggedInAsync(response?.body?.token));
                         dispatch(setEmail(email));
-                        navigation.reset({ index: 0, routes: [{ name: 'Home', params: { token: response?.body?.token } }] });
+                        navigation.reset({ index: 0, routes: [{ name: 'SplashScreen', params: { token: response?.body?.token } }] });
                     }
                 }
                 dispatch(setIsCheckingLogin(false));

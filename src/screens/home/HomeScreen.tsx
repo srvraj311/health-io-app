@@ -28,7 +28,7 @@ const HomeScreen = () => {
                         <Image style={homeStyles.icon} source={require('../../assets/icons/notification.png')} />
                     </TouchableOpacity>
                 </View>
-                <HeadingTextsHome text1={'Hey' + ' ' + user?.user?.first_name.substring(0, 15)} text2='Welcome to health.io' />
+                <HeadingTextsHome text1={'Hey' + ' ' + ((user.user?.first_name) ? user.user?.first_name.substring(0, 15) : "User")} text2='Welcome to health.io' />
             </View>
             <View style={homeStyles.body}>
                 <View style={homeStyles.marginNegetative}>

@@ -73,6 +73,10 @@ const Home = (prop: Props) => {
             removeTokenFromStorage();
             prop.navigation.replace('Login');
         }
+        if (prop.navigation.getParent() === null &&  !user.isLoggedIn) {
+            removeTokenFromStorage();
+            prop.navigation.replace('Login');
+        }
     }, [user.isLoggedIn])
 
 

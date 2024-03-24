@@ -32,7 +32,7 @@ const HospitalBottomSheet = (props: { bottomSheetRef: React.RefObject<BottomShee
                     onPress={() => onPressFilter()} />
                 <PrimaryOutlinedButton
                     disabled={hospitalState.optionSelected !== Constants.OPTION_SELECT_CITY}
-                    icon='map-marker' width='170' title={hospitalState.cityName || 'Select City'}
+                    icon='map-marker' width='170' title={hospitalState.cityName ? 'Change City' : 'Select City'}
                     onPress={() => onPressSelectCity()} />
             </View>
             <View style={styles.bottomSheetContainer}>
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     cityName: {
-        fontSize: 12,
+        fontSize: 14,
+        fontWeight: 'bold'
     },
     subContainer: {
         width: '100%',
