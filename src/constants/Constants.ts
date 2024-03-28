@@ -18,4 +18,5 @@ export class ApiEndpoints {
     static SIGNUP = '/auth/signup'
     static FORGOT_PASSWORD = '/auth/reset-password'
     static GET_CITIES = '/hospital/cities'
+    static GET_HOSPITALS_BY_CITY = '/hospital/city'
 }

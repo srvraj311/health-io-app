@@ -6,7 +6,7 @@ import { Cities } from '../../../../service/hospital/cities'
 import { ScrollView } from 'react-native-gesture-handler'
 import { AppDispatch, RootState } from '../../../../redux/reducers/user/userStore'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCityName } from '../../../../redux/reducers/hospital/hospitalSlice'
+import { getHospitalsAsync, setCityName } from '../../../../redux/reducers/hospital/hospitalSlice'
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import GlobalStyles from '../../../../styles/general/global_styles'
 
@@ -29,6 +29,7 @@ const SelectCityComponent = (props: { bottomSheetRef: React.RefObject<BottomShee
     const onSelectedCity = (city: string) => {
         setSelectedCity(city)
         dispatch(setCityName(city));
+        dispatch(getHospitalsAsync(city));
         bottomSheetRef.current?.collapse();
     }
     const onPress = () => {
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     listItem: {
         borderBottomWidth: 1,
         borderBottomColor: GlobalStyles.grey200,
-        backgroundColor: GlobalStyles.grey50,
+        backgroundColor: GlobalStyles.white,
         paddingLeft: 10
     }
 })

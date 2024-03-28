@@ -68,7 +68,7 @@ const primaryButtonStyle = StyleSheet.create({
     },
     buttonPrimary: {
         borderWidth: 1,
-        backgroundColor: GlobalStyles.grey50,
+        backgroundColor: GlobalStyles.white,
     },
     buttontext: {
         color: GlobalStyles.secondaryColor,

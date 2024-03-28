@@ -63,21 +63,21 @@ const Home = (prop: Props) => {
     const Tab = createBottomTabNavigator<HomeTabParamList>();
 
     useEffect(() => {
-        if (prop.route.params.token) {
-            dispatch(isLoggedInAsync(prop.route.params.token))
-        } else {
-            prop.navigation.replace('Login');
-        }
+        // if (prop.route.params.token) {
+        //     dispatch(isLoggedInAsync(prop.route.params.token));
+        // } else {
+        //     prop.navigation.replace('Login');
+        // }
 
-        if (user.isLoggedIn && user.user === null) {
-            removeTokenFromStorage();
-            prop.navigation.replace('Login');
-        }
-        if (prop.navigation.getParent() === null &&  !user.isLoggedIn) {
-            removeTokenFromStorage();
-            prop.navigation.replace('Login');
-        }
-    }, [user.isLoggedIn])
+        // if (user.isLoggedIn && user.user === null) {
+        //     removeTokenFromStorage();
+        //     prop.navigation.replace('Login');
+        // }
+        // if (prop.navigation.getParent() === null &&  !user.isLoggedIn) {
+        //     removeTokenFromStorage();
+        //     prop.navigation.replace('Login');
+        // }
+    }, [])
 
 
     return (

@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     chipDisabled: {
-        backgroundColor: GlobalStyles.grey100,
+        backgroundColor: GlobalStyles.white,
         margin: 5,
         color: GlobalStyles.white,
         fontSize: 16,

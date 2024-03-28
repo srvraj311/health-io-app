@@ -9,6 +9,7 @@ import { setSelectedOption } from '../../../../redux/reducers/hospital/hospitalS
 import FilterComponent from './FilterComponent';
 import SelectCityComponent from './SelectCityComponent';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
+import GlobalStyles from '../../../../styles/general/global_styles';
 
 const HospitalBottomSheet = (props: { bottomSheetRef: React.RefObject<BottomSheetMethods> }) => {
 
@@ -52,7 +53,8 @@ const styles = StyleSheet.create({
     },
     cityName: {
         fontSize: 14,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: GlobalStyles.grey500
     },
     subContainer: {
         width: '100%',

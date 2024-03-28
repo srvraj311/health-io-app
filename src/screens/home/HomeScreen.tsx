@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 const HomeScreen = () => {
     const navigation = useNavigation<BottomTabNavigationProp<HomeTabParamList>>();
     const user = useSelector((state: RootState) => state.user);
+    
     return (
         <View style={homeStyles.container}>
             {/* Top Container */}

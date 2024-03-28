@@ -31,7 +31,7 @@ function AppPro(): JSX.Element {
             </View>
             <Text>{user.email}</Text>
             {/* Calling reducers */}
-            <Button onPress={() => dispatch(isLoggedInAsync())} title='Login' ></Button>
+            {/* <Button onPress={() => dispatch(isLoggedInAsync())} title='Login' ></Button> */}
             <Button onPress={() => dispatch(setEmail("Sample Email Payload"))} title='Set Payload' ></Button>
         </SafeAreaView>
     )

@@ -8,6 +8,7 @@ const initialState: CurrentUserState = {
     user: null as any, // Empty user :,
     isLoggedIn: false,
     isCheckingLogin: false,
+    hasVerifiedToken: false,
 }
 
 const userSlice = createSlice({
@@ -32,6 +33,9 @@ const userSlice = createSlice({
         },
         setUser: (state, action: PayloadAction<User>) => {
             state.user = action.payload
+        },
+        setHasVerifiedToken: (state, action: PayloadAction<boolean>) => {
+            state.hasVerifiedToken = action.payload;
         }
     },
     // All async reducers below
@@ -41,6 +45,7 @@ const userSlice = createSlice({
                 state.isLoggedIn = action.payload.status
                 if (action.payload.user) {
                     state.user = action.payload.user
+                    state.hasVerifiedToken = true
                 }
                 // action.payload is true that we returned in the async function
                 state.isCheckingLogin = false
@@ -53,6 +58,7 @@ const userSlice = createSlice({
             .addCase(isLoggedInAsync.rejected, (state) => {
                 state.isCheckingLogin = false
                 state.isLoggedIn = false
+                state.hasVerifiedToken = true;
             })
     }
 })
@@ -79,11 +85,13 @@ export const isLoggedInAsync = createAsyncThunk(
                             user: response?.body?.user
                         })
                     } else {
+                        removeTokenFromStorage();
                         reject({
                             status: false
                         })
                     }
                 })?.catch((error) => {
+                    removeTokenFromStorage();
                     reject({
                         status: false
                     })
@@ -92,5 +100,5 @@ export const isLoggedInAsync = createAsyncThunk(
     }
 );
 
-export const { login, logout, setEmail, setUser, setIsCheckingLogin } = userSlice.actions;
+export const { login, logout, setEmail, setUser, setIsCheckingLogin , setHasVerifiedToken} = userSlice.actions;
 export default userSlice.reducer;

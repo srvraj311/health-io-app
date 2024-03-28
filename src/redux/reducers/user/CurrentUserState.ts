@@ -5,4 +5,5 @@ export interface CurrentUserState {
     user: User,
     isLoggedIn: boolean,
     isCheckingLogin: boolean,
+    hasVerifiedToken: boolean
 }
