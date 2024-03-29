@@ -124,6 +124,16 @@ const HospitalList = () => {
           </View>
           <ScrollView
             style={hStyles.hospitalCardContainer}
+            // refreshControl={
+            //   <RefreshControl
+            //     refreshing={hospitalState.isFetching}
+            //     onRefresh={() => {
+            //       if (hospitalState.cityName) {
+            //         dispatch(getHospitalsAsync(hospitalState.cityName));
+            //       }
+            //     }}
+            //   />
+            // }
             keyboardDismissMode='on-drag'>
             {
               hospitalState.hosiptalList && hospitalState.hosiptalList.map((hospital: any, index: number) => {
