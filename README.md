@@ -5,6 +5,9 @@ This ia a react-native app for my personal project health-io, which is a healthc
 Health.io leverages artificial intelligence (AI) to automate core healthcare functionalities, aiming to improve efficiency and streamline processes across the healthcare ecosystem. This includes utilizing AI for digital prescription generation, intelligent medication recommendations, and enhanced patient and provider experiences. Additionally, Health.io incorporates AI-powered hospital account management to optimize administrative tasks and financial processes.
 
 ### Screenshots
+[![Figma](https://res.cloudinary.com/srvraj311/image/upload/c_pad,w_200/v1711705642/figma_logo_icon_171159_rrh0cv.png)](
+    https://www.figma.com/file/wQ8lqgVqOIZNY4Bu4WBa6v/Health-IO-Admin?type=design&node-id=0-1&mode=design
+)
 
 ![](https://res.cloudinary.com/srvraj311/image/upload/c_pad,h_300/v1711701715/Screenshot_1711701603_ikdmgf.png) ![](https://res.cloudinary.com/srvraj311/image/upload/c_pad,h_300/v1711701716/Screenshot_1711701628_y9hyvv.png) ![](https://res.cloudinary.com/srvraj311/image/upload/c_pad,h_300/v1711701716/Screenshot_1711701636_z7orev.png) ![](https://res.cloudinary.com/srvraj311/image/upload/c_pad,h_300/v1711701716/Screenshot_1711701674_ga68bu.png) ![](https://res.cloudinary.com/srvraj311/image/upload/c_pad,h_300/v1711701717/Screenshot_1711701694_ef3vvi.png) ![](https://res.cloudinary.com/srvraj311/image/upload/c_pad,h_300/v1711701717/Screenshot_1711701681_es7wk0.png)
 
