@@ -2,11 +2,18 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import GlobalStyles from '../../../styles/general/global_styles';
 import {Icon} from 'react-native-paper';
-import { Hospital } from '../../../redux/reducers/hospital/hospitalSlice';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { HospitalCardType } from '../../../redux/reducers/hospital/hospitalSlice';
 
-const HospitalCard = (props: Hospital) => {
+const HospitalCard = ({
+  hospital, onPress
+}: {
+  hospital : HospitalCardType,
+  onPress: (hospital: HospitalCardType) => void
+}) => {
+
   return (
-    <View style={hStyles.card}>
+    <TouchableOpacity style={hStyles.card} activeOpacity={0.7} onPress={() => onPress(hospital)}>
       {/* Top Row */}
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
@@ -14,7 +21,7 @@ const HospitalCard = (props: Hospital) => {
             source={require('../../../assets/images/hospital.png')}
             style={hStyles.hospitalIcon}
           />
-          <Text style={hStyles.hospitalName}>{props.name}</Text>
+          <Text style={hStyles.hospitalName}>{hospital.name}</Text>
         </View>
         <Image
           source={require('../../../assets/images/verified.png')}
@@ -40,7 +47,7 @@ const HospitalCard = (props: Hospital) => {
               lineHeight: 20,
               color: GlobalStyles.grey500,
             }}>
-            {props.address}
+            {hospital.address}
           </Text>
         </View>
         {/* Right side */}
@@ -59,18 +66,18 @@ const HospitalCard = (props: Hospital) => {
             }}>
             <Icon source={'star'} size={24} color={GlobalStyles.warn}></Icon>
             <Text style={{marginLeft: 2, color: GlobalStyles.grey500}}>
-              {props.rating}
+              {hospital.rating}
             </Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
             <Icon source={'navigation-variant'} size={24}></Icon>
             <Text style={{marginLeft: 2, color: GlobalStyles.grey500}}>
-              {props.distance}
+              {hospital.distance}
             </Text>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -89,13 +96,11 @@ const hStyles = StyleSheet.create({
   hospitalName: {
     color: GlobalStyles.secondaryColor,
     fontSize: 16,
-    fontWeight: '900',
-    fontFamily: GlobalStyles.baseFont,
+    fontFamily: GlobalStyles.baseFontMedium,
     maxWidth: 210,
     maxHeight: 60,
     marginVertical: 6,
     marginHorizontal: 10,
-    letterSpacing: 0.35,
   },
   hospitalIcon: {
     width: 50,

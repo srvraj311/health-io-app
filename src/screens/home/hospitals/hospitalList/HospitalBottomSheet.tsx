@@ -29,11 +29,11 @@ const HospitalBottomSheet = (props: { bottomSheetRef: React.RefObject<BottomShee
             <View style={styles.subContainer}>
                 <PrimaryOutlinedButton
                     disabled={hospitalState.optionSelected !== Constants.OPTION_FILTER}
-                    icon='filter' width='170' title="Filter"
+                    icon='filter' width='165' title="Filter"
                     onPress={() => onPressFilter()} />
                 <PrimaryOutlinedButton
                     disabled={hospitalState.optionSelected !== Constants.OPTION_SELECT_CITY}
-                    icon='map-marker' width='170' title={hospitalState.cityName ? 'Change City' : 'Select City'}
+                    icon='map-marker' width='165' title={hospitalState.cityName ? 'Change City' : 'Select City'}
                     onPress={() => onPressSelectCity()} />
             </View>
             <View style={styles.bottomSheetContainer}>

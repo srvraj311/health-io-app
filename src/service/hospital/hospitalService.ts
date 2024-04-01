@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { Alert } from "react-native";
-import { post } from "../api/apiService";
+import { get, post } from "../api/apiService";
 import { ApiEndpoints } from "../../constants/Constants";
 
 export const getCityNameFromStorage = (): Promise<string | null> => {
@@ -19,6 +19,18 @@ export const getHospitalsFromApi = (cityName: string) => {
     return post(ApiEndpoints.GET_HOSPITALS_BY_CITY, {} , {
         params : {
             city_name: cityName
+        }
+    })
+}
+
+export const gethospitalDataFromApi = (hosipital_id: string) => {
+    if (!hosipital_id) {
+        Alert.alert("Invalid hospital selection, try again");
+    }
+
+    return get(ApiEndpoints.GET_HOSPITAL_BY_ID, {} , {
+        params : {
+            hospital_id: hosipital_id
         }
     })
 }

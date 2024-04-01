@@ -39,6 +39,9 @@ const GlobalStyles = {
 
     // Font Styles and sizes
     baseFont: 'BeVietnamPro-Regular',
+    baseFontBold: 'BeVietnamPro-Bold',
+    baseFontSemiBold: 'BeVietnamPro-SemiBold',
+    baseFontMedium: 'BeVietnamPro-Medium',
 
 
     //

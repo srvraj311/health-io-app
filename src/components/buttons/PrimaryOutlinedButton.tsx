@@ -60,7 +60,7 @@ const primaryButtonStyle = StyleSheet.create({
         display: 'flex',
         borderRadius: 8,
         marginTop: 32,
-        zIndex: 2
+        zIndex: 2, 
     },
     buttonLight: {
         backgroundColor: GlobalStyles.grey100,

@@ -41,7 +41,7 @@ async function makeRequest<T>(
     }
 
     console.log("Url : " + `${BASE_URL}${url}`)
-    console.log('Payload : ' + JSON.stringify(data));
+    console.log('Payload : ' + JSON.stringify(data ? data : ''));
     console.log('Config : ' + JSON.stringify(finalConfig));
 
     return axios({
@@ -55,11 +55,11 @@ async function makeRequest<T>(
             return response?.data
         })
         .catch((error) => {
-            if (error?.response.data.error.message) {
-                console.log('Known Error : ' + JSON.stringify(error.response.data));
-                console.log(error.response.data);
+            if (error?.response?.data?.error?.message) {
+                console.log('Known Error : ' + JSON.stringify(error?.response?.data));
+                console.log(error?.response?.data);
                 // Alert.alert(error.response.data.error.message);
-                throw error.response.data.error; // Re-throw for caller handling
+                throw error?.response?.data?.error; // Re-throw for caller handling
                 return;
             }
 

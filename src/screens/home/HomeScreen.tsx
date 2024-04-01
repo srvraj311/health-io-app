@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import HeadingTextsHome from '../../components/common/HeadingTextsHome'
 import PrimaryCardIcon from '../../components/common/PrimaryCardIcon'
@@ -15,6 +15,7 @@ const HomeScreen = () => {
     
     return (
         <View style={homeStyles.container}>
+            <StatusBar translucent backgroundColor="transparent" />
             {/* Top Container */}
             <View style={homeStyles.topContainer}>
                 <View style={homeStyles.margin}></View>

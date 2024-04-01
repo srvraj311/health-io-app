@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme } from 'react-native'
 import React, { Children, useState } from 'react'
 import PrimaryInputWhite from '../../../../components/input/PrimaryInputWhite'
 import { List } from 'react-native-paper'
@@ -75,7 +75,7 @@ const SelectCityComponent = (props: { bottomSheetRef: React.RefObject<BottomShee
                     title={selectedState ? selectedState : 'Select State'}
                     left={props => <List.Icon {...props} icon="map-marker" />}
                 >
-                    <ScrollView style={styles.scrollView}>
+                    <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={true} indicatorStyle={useColorScheme() === 'dark' ? 'white' : 'black'}>
                         {Object
                             .keys(Cities)
                             .sort((a, b) => a.localeCompare(b))
@@ -121,10 +121,18 @@ const styles = StyleSheet.create({
     subContainer: {
     },
     states: {
-        maxHeight: 200
+        maxHeight: 200,
+        backgroundColor: GlobalStyles.white,
+        borderColor: GlobalStyles.primaryColour,
+        borderWidth: 1,
+        borderRadius: 5
     },
     cities: {
-        maxHeight: 200
+        maxHeight: 200,
+        backgroundColor: GlobalStyles.white,
+        borderColor: GlobalStyles.primaryColour,
+        borderWidth: 1,
+        borderRadius: 5
     },
     scrollView: {
         backgroundColor: GlobalStyles.grey50,
@@ -133,8 +141,8 @@ const styles = StyleSheet.create({
     },
     listItem: {
         borderBottomWidth: 1,
-        borderBottomColor: GlobalStyles.grey200,
-        backgroundColor: GlobalStyles.white,
+        borderBottomColor: 'transparent',
+        backgroundColor: GlobalStyles.grey50,
         paddingLeft: 10
     }
 })

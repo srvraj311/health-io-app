@@ -25,21 +25,27 @@ const SplashScreen = () => {
             dispatch(isLoggedInAsync(t));
         }
         if (!user.isCheckingLogin && user.isLoggedIn && user.hasVerifiedToken) {
-            navigation.navigate('Home', { token : t as string});
+            navigation.replace('Home', { token : t as string});
         }
         if(!user.isCheckingLogin && !user.isLoggedIn && user.hasVerifiedToken) {
             removeTokenFromStorage();
-            navigation.navigate('Login');
+            navigation.replace('Login');
         }
       } else {
         if(!user.isCheckingLogin && !user.isLoggedIn && !user.hasVerifiedToken) {
             removeTokenFromStorage();
-            navigation.navigate('Login');
-          }
+            navigation.replace('Login');
+        }
+        if(!user.isCheckingLogin && user.isLoggedIn && !user.hasVerifiedToken) {
+            navigation.replace('Home', { token : t as string});
+        }
+        if(!user.isCheckingLogin && !user.isLoggedIn && user.hasVerifiedToken) {
+            navigation.replace('Login');
+        }
       }
       
     });
-  }, [user.isLoggedIn, user.hasVerifiedToken]);
+  }, [user.isLoggedIn, user.hasVerifiedToken, user.isCheckingLogin]);
 
   return (
     <View style={splashStyle.container}>

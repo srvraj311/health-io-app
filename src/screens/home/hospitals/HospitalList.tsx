@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   RefreshControl,
+  StatusBar,
 } from 'react-native';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {getCityNameFromStorage} from '../../../service/hospital/hospitalService';
@@ -15,30 +16,26 @@ import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
 import GlobalStyles from '../../../styles/general/global_styles';
 import HospitalBottomSheet from './hospitalList/HospitalBottomSheet';
 import PrimaryInputWhite from '../../../components/input/PrimaryInputWhite';
-import HospitalCard, {HospitalCardType} from './HospitalCard';
+import HospitalCard from './HospitalCard';
 import {
-  Hospital,
+  HospitalCardType,
   getHospitalsAsync,
   setCityName,
 } from '../../../redux/reducers/hospital/hospitalSlice';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../navigation/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const HospitalList = () => {
   const hospitalState = useSelector((state: RootState) => state.hospital);
   const dispatch = useDispatch<AppDispatch>();
+  const rootNavigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const [isCitySelected, setIsCitySelected] = useState(
     hospitalState.cityName !== '',
   );
   const [cityName, setCurrentCityName] = useState('');
-
   const [searchText, setSearchText] = useState('');
-  const hospitalCard: HospitalCardType = {
-    name: 'Apollo Hospital, Pimpri Chinchwad Pune',
-    address: 'Magarpatta, Pune',
-    icon: 'hospital-building',
-    distance: '2h 40m',
-    rating: '4.5',
-  };
 
   useEffect(() => {
     getCityNameFromStorage().then((city: any) => {
@@ -69,6 +66,7 @@ const HospitalList = () => {
   }, []);
   return (
     <GestureHandlerRootView style={{flex: 1}}>
+      <StatusBar translucent backgroundColor="transparent" />
       <ScrollView
         contentContainerStyle={hStyles.scrollView}
         automaticallyAdjustKeyboardInsets={true}
@@ -111,7 +109,7 @@ const HospitalList = () => {
               source={require('../../../assets/images/home_bg.png')}
             />
           </View>
-          <View style={hStyles.container}>
+          <View style={[{marginTop: 0}, hStyles.container, ]}>
             <View style={hStyles.header}>
               <PrimaryInputWhite
                 placeholder="Search Hospital"
@@ -137,16 +135,19 @@ const HospitalList = () => {
             keyboardDismissMode='on-drag'>
             {
               hospitalState.hosiptalList && hospitalState.hosiptalList.map((hospital: any, index: number) => {
-                const hospitalCard: Hospital = {
+                const hospitalCard: HospitalCardType = {
                   name : hospital.hospital.name,
                   address : hospital.hospitalInfo.address,
                   icon : 'hospital-building',
                   distance : '--',
                   rating : '4.5',
-                  city: hospital.hospital.city
-
+                  city: hospital.hospital.city,
+                  id: hospital.hospital.id
                 }
-                return <HospitalCard {...hospitalCard} key={index} />
+                return <HospitalCard hospital={hospitalCard} onPress={(hospital: HospitalCardType) => {
+                  // On select of hospital go to new view
+                  rootNavigation.push('HospitalDetails', {hospital: hospital})
+                }} key={index} />
               })
             }
           </ScrollView>

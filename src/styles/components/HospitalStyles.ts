@@ -8,7 +8,6 @@ export const hStyles = StyleSheet.create({
         backgroundColor: 'transparent',
         height: 150,
         zIndex: -1,
-        marginTop: -20,
     },
     contentContainer: {
         zIndex: -1,

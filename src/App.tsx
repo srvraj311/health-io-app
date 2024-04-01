@@ -34,6 +34,7 @@ import SplashScreen from './screens/SplashScreen';
 import { PaperProvider } from 'react-native-paper';
 import FinishSignup from './screens/auth/Signup/FinishSignup';
 import ForgotPassword from './screens/auth/Login/ForgotPassword';
+import HospitalDetails from './screens/home/hospitals/HospitalDetails';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -81,6 +82,12 @@ function App(): JSX.Element {
                 headerShown: false
               }}
             />
+            <Stack.Screen
+              name="HospitalDetails"
+              component={HospitalDetails}
+              options={{
+                headerShown: false
+              }}/>
             <Stack.Screen name="Details" component={Details} />
           </Stack.Navigator>
         </NavigationContainer>

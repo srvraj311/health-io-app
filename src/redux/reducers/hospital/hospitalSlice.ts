@@ -5,18 +5,19 @@ import { getCityNameFromStorage, getHospitalsFromApi, setCityNameToStorage } fro
 export type HospitalState = {
     cityName: string,
     optionSelected: string,
-    hosiptalList: Hospital[],
-    filteredHospitalList: Hospital[],
+    hosiptalList: HospitalCardType[],
+    filteredHospitalList: HospitalCardType[],
     isFetching: boolean,
 }
 
-export type Hospital = {
+export type HospitalCardType = {
     name: string,
     city: string,
     address: string,
     icon: string,
     distance: string,
-    rating: string
+    rating: string,
+    id: string
 }
 
 
@@ -39,13 +40,13 @@ const hospitalState = createSlice({
         setSelectedOption: (state, action: PayloadAction<string>) => {
             state.optionSelected = action.payload
         },
-        setFilteredHospitalList: (state, action: PayloadAction<Hospital[]>) => {
+        setFilteredHospitalList: (state, action: PayloadAction<HospitalCardType[]>) => {
             
         }
     },
     extraReducers(builder) {
         builder
-            .addCase(getHospitalsAsync.fulfilled, (state, action: PayloadAction<{hospitals: Hospital[]}>) => {
+            .addCase(getHospitalsAsync.fulfilled, (state, action: PayloadAction<{hospitals: HospitalCardType[]}>) => {
                 if (action.payload.hospitals) {
                     state.hosiptalList = action.payload.hospitals
                 } // = action.payload.hospitals;
@@ -65,7 +66,7 @@ const hospitalState = createSlice({
 
 export const getHospitalsAsync = createAsyncThunk(
     'hospital/getHospitalsAsync',
-    async (cityName: string): Promise<{hospitals: Hospital[]}> => {
+    async (cityName: string): Promise<{hospitals: HospitalCardType[]}> => {
         return new Promise((resolve, reject) => {
             getHospitalsFromApi(cityName)
                 .then((response: any) => {

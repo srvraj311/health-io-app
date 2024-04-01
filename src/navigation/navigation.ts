@@ -1,5 +1,4 @@
-import { User } from "../models/User";
-import SplashScreen from '../screens/SplashScreen';
+import { HospitalCardType } from "../redux/reducers/hospital/hospitalSlice";
 
 export type RootStackParamList = {
 
@@ -19,5 +18,8 @@ export type RootStackParamList = {
     },
     ForgotPassword: {
         email: string
+    },
+    HospitalDetails: {
+        hospital: HospitalCardType
     }
 };
