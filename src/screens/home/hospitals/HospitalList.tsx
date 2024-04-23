@@ -23,21 +23,21 @@ import {
   setCityName,
   setFilteredHospitalList,
 } from '../../../redux/reducers/hospital/hospitalSlice';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../../navigation/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ActivityIndicator, Text } from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../../../navigation/navigation';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {ActivityIndicator, Text} from 'react-native-paper';
 
 const HospitalList = () => {
   const hospitalState = useSelector((state: RootState) => state.hospital);
   const dispatch = useDispatch<AppDispatch>();
-  const rootNavigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const rootNavigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const [isCitySelected, setIsCitySelected] = useState(
     hospitalState.cityName !== '',
   );
   const [cityName, setCurrentCityName] = useState('');
-  
 
   useEffect(() => {
     getCityNameFromStorage().then((city: any) => {
@@ -63,17 +63,14 @@ const HospitalList = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    
-  }, []);
+  const handleSheetChanges = useCallback((index: number) => {}, []);
 
   const handleOnSearchTextChange = (text: string) => {
     const filteredHospitals = hospitalState.hosiptalList?.filter(
       (hospital: HospitalCardType) =>
-        hospital.name
-          .toLowerCase()
-          .includes(text.toLowerCase()) && hospital.address.toLowerCase().includes(text.toLowerCase())
-    )
+        hospital.name.toLowerCase().includes(text.toLowerCase()) &&
+        hospital.address.toLowerCase().includes(text.toLowerCase()),
+    );
     dispatch(setFilteredHospitalList(filteredHospitals));
   };
   return (
@@ -84,7 +81,7 @@ const HospitalList = () => {
         automaticallyAdjustKeyboardInsets={true}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="never"
-        keyboardDismissMode='none'
+        keyboardDismissMode="none"
         bounces={false}>
         <KeyboardAvoidingView
           enabled
@@ -94,10 +91,10 @@ const HospitalList = () => {
           <BottomSheet
             ref={bottomSheetRef}
             onChange={handleSheetChanges}
-            keyboardBehavior='interactive'
+            keyboardBehavior="interactive"
             index={0}
-            keyboardBlurBehavior='restore'
-            android_keyboardInputMode='adjustPan'
+            keyboardBlurBehavior="restore"
+            android_keyboardInputMode="adjustPan"
             snapPoints={['8%', '40%', '50%', '60%', '80%', '90%']}
             style={hStyles.bottomSheet}
             handleIndicatorStyle={{
@@ -120,7 +117,7 @@ const HospitalList = () => {
               source={require('../../../assets/images/home_bg.png')}
             />
           </View>
-          <View style={[{marginTop: 0}, hStyles.container, ]}>
+          <View style={[{marginTop: 0}, hStyles.container]}>
             <View style={hStyles.header}>
               <PrimaryInputWhite
                 placeholder="Search Hospital"
@@ -131,44 +128,67 @@ const HospitalList = () => {
             </View>
             {/* <View style={{marginTop: 40}}></View> */}
           </View>
-          {hospitalState.isFetching && <View style={hStyles.activityIndicator}>
-            <ActivityIndicator  animating={hospitalState.isFetching} color={GlobalStyles.primaryColour} size="large" />
-            <Text style={{margin: 10}}>{hospitalState.isFetching ? 'Loading Hospitals' : ''}</Text>
-          </View>}
-          
-          
+          {hospitalState.isFetching && (
+            <View style={hStyles.activityIndicator}>
+              <ActivityIndicator
+                animating={hospitalState.isFetching}
+                color={GlobalStyles.primaryColour}
+                size="large"
+              />
+              <Text style={{margin: 10}}>
+                {hospitalState.isFetching ? 'Loading Hospitals' : ''}
+              </Text>
+            </View>
+          )}
+
           <ScrollView
             style={hStyles.hospitalCardContainer}
             refreshControl={
-              <RefreshControl
+              Platform.OS === 'ios' ?  <RefreshControl
                 refreshing={hospitalState.isFetching}
+                tintColor={GlobalStyles.primaryColour}
+                colors={[GlobalStyles.primaryColour]}
                 onRefresh={() => {
                   if (hospitalState.cityName) {
                     dispatch(getHospitalsAsync(hospitalState.cityName));
                   }
                 }}
-              />
+              /> : <></>
             }
-            keyboardDismissMode='on-drag'>
-              <View style={{marginTop: 20}} />
-            {
-              hospitalState.filteredHospitalList && hospitalState.filteredHospitalList.map((hospital: any, index: number) => {
-                const hospitalCard: HospitalCardType = {
-                  name : hospital.name,
-                  address : hospital.address,
-                  icon : 'hospital-building',
-                  distance : hospital.distance,
-                  rating : hospital.rating,
-                  city: hospital.city,
-                  id: hospital.id
-                }
-                return <HospitalCard hospital={hospitalCard} onPress={(hospital: HospitalCardType) => {
-                  // On select of hospital go to new view
-                  if (hospitalState.isFetching) return;
-                  rootNavigation.push('HospitalDetails', {hospital: hospital})
-                }} key={index} />
-              })
-            }
+            onScroll={event => {
+              if (event.nativeEvent.contentOffset.y > 0) {
+                bottomSheetRef.current?.snapToIndex(0); 
+              }
+            }}
+            keyboardDismissMode="on-drag">
+            <View style={{marginTop: 20}} />
+            {hospitalState.filteredHospitalList &&
+              hospitalState.filteredHospitalList.map(
+                (hospital: any, index: number) => {
+                  const hospitalCard: HospitalCardType = {
+                    name: hospital.name,
+                    address: hospital.address,
+                    icon: 'hospital-building',
+                    distance: hospital.distance,
+                    rating: hospital.rating,
+                    city: hospital.city,
+                    id: hospital.id,
+                  };
+                  return (
+                    <HospitalCard
+                      hospital={hospitalCard}
+                      onPress={(hospital: HospitalCardType) => {
+                        // On select of hospital go to new view
+                        if (hospitalState.isFetching) return;
+                        rootNavigation.push('HospitalDetails', {
+                          hospital: hospital,
+                        });
+                      }}
+                      key={index}
+                    />
+                  );
+                },
+              )}
             <View style={{marginTop: 20}} />
           </ScrollView>
         </KeyboardAvoidingView>

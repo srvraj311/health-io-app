@@ -10,12 +10,13 @@ export const hStyles = StyleSheet.create({
         zIndex: -1,
     },
     contentContainer: {
-        zIndex: -1,
+        zIndex: 2,
         flex: 1,
         alignItems: 'center',
         backgroundColor: GlobalStyles.white
     },
     bottomSheet: {
+        display: 'flex',
         elevation: 3,
         zIndex: 1,
     },
@@ -50,14 +51,17 @@ export const hStyles = StyleSheet.create({
         resizeMode: 'cover'
     },
     hospitalCardContainer : {
+        paddingHorizontal: 6,
         borderTopLeftRadius:40,
-        zIndex: -1,
-        marginTop: 0,
         flex: 1,
+        marginTop: 0,
+        position: 'relative',
+        overflow: 'hidden',
         minWidth: '100%',
         width: '100%',
         backgroundColor: GlobalStyles.white,
         height: '100%',
+        zIndex: -1,
     },
     
     keyboardAvoidingView: {
