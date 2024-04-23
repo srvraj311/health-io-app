@@ -1,4 +1,4 @@
-import { View, Text, ImageComponent, Image, TextInput, Alert, KeyboardAvoidingView, ScrollView, Platform } from 'react-native'
+import { View, Text, ImageComponent, Image, TextInput, Alert, KeyboardAvoidingView, ScrollView, Platform, StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import { loginStyles } from '../../../styles/components/LoginStyles'
 import HeadingTexts from '../../../components/common/HeadingTexts'
@@ -82,6 +82,7 @@ const Login = () => {
                 behavior={Platform.OS === "ios" ? "height" : "height"}
                 style={loginStyles.keyboardViewContainer}
             >
+                <StatusBar translucent backgroundColor={'transparent'} barStyle={'dark-content'}/>
                 <View style={[loginStyles.body, isIos ? loginStyles.containerIos : loginStyles.containerAndoroid]}>
                     <Image style={loginStyles.image} source={
                         require('../../../assets/images/icon.png')

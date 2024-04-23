@@ -39,7 +39,7 @@ const HospitalCard = ({
             marginTop: 24,
             alignItems: 'center',
           }}>
-          <Icon source={'map-marker'} size={24}></Icon>
+          <Icon source={'map-marker'} size={24} color={GlobalStyles.grey500}></Icon>
           <Text
             style={{
               marginLeft: 2,
@@ -65,13 +65,13 @@ const HospitalCard = ({
               alignItems: 'center',
             }}>
             <Icon source={'star'} size={24} color={GlobalStyles.warn}></Icon>
-            <Text style={{marginLeft: 2, color: GlobalStyles.grey500}}>
+            <Text style={{marginLeft: 2, color: GlobalStyles.grey500, marginTop: 4}}>
               {hospital.rating}
             </Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-            <Icon source={'navigation-variant'} size={24}></Icon>
-            <Text style={{marginLeft: 2, color: GlobalStyles.grey500}}>
+            <Icon source={'navigation-variant'} size={24} color={GlobalStyles.grey500}></Icon>
+            <Text style={{marginLeft: 2, color: GlobalStyles.grey500, marginTop: 4}}>
               {hospital.distance}
             </Text>
           </View>

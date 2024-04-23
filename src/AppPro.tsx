@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from './redux/reducers/user/userStore'
-import { login, setEmail, isLoggedInAsync } from './redux/reducers/user/userSlice'
+import { setEmail } from './redux/reducers/user/userSlice'
 
 
 function AppPro(): JSX.Element {
@@ -30,8 +30,6 @@ function AppPro(): JSX.Element {
                 <Text style={user.isLoggedIn ? styles.whitetext : styles.darkMode}>Hello World</Text>
             </View>
             <Text>{user.email}</Text>
-            {/* Calling reducers */}
-            {/* <Button onPress={() => dispatch(isLoggedInAsync())} title='Login' ></Button> */}
             <Button onPress={() => dispatch(setEmail("Sample Email Payload"))} title='Set Payload' ></Button>
         </SafeAreaView>
     )

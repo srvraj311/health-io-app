@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import GlobalStyles from "../general/global_styles";
 
 const splashStyle = StyleSheet.create({
 
@@ -6,11 +7,17 @@ const splashStyle = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'black'
+        backgroundColor: GlobalStyles.white,
     },
-
+    icon : {
+        height: 125,
+        width: 141,
+    },
     text: {
-        color: 'white'
+        fontFamily: GlobalStyles.baseFont,
+        fontSize: 16,
+        marginTop: 16,
+        color: GlobalStyles.grey500
     },
 
     image: {

@@ -38,7 +38,7 @@ const saveTokenToStorage = (token: string) => {
     AsyncStorage.setItem("token", token);
 }
 
-const getTokenFromStorage = () => {
+const getTokenFromStorage = async () => {
     return AsyncStorage.getItem("token");
 }
 

@@ -82,7 +82,7 @@ const Signup = ({ route }: SignupProps): JSX.Element => {
                         console.log(response?.body?.token)
                         saveTokenToStorage(response?.body?.token);
                         // Update all states in Redux stores
-                        dispatch(isLoggedInAsync(response?.body?.token));
+                        dispatch(isLoggedInAsync());
                         dispatch(setEmail(email));
                         navigation.reset({ index: 0, routes: [{ name: 'SplashScreen', params: { token: response?.body?.token } }] });
                     }

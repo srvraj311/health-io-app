@@ -4,6 +4,9 @@ import { Chip, Icon } from 'react-native-paper'
 import GlobalStyles from '../../../../styles/general/global_styles'
 import { err } from 'react-native-svg';
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../../redux/reducers/user/userStore';
+import { filterHighRated, sortByDistance, sortByName, sortByRating } from '../../../../redux/reducers/hospital/hospitalSlice';
 export type Filter = {
     name: string,
     selected: boolean
@@ -15,6 +18,8 @@ export type Sort = {
 }
 
 const FilterComponent = (props: { bottomSheetRef: React.RefObject<BottomSheetMethods> }) => {
+    const hospitalState = useSelector((state: RootState) => state.hospital);
+    const dispatch = useDispatch<AppDispatch>();
     const defaultFilters: Filter[] = [
         {
             name: 'High Ratings',
@@ -68,6 +73,9 @@ const FilterComponent = (props: { bottomSheetRef: React.RefObject<BottomSheetMet
                 sort.selected = false;
                 break;
         }
+        // When one sort is enabled, disable the other
+        sorts.forEach(s => s.name != sort.name ? s.selected = false : null);
+        sort.name == 'Distance' ? dispatch(sortByDistance(sort.sort)) : sort.name == 'Rating' ? dispatch(sortByRating(sort.sort)) : dispatch(sortByName(sort.sort));
         setSorts([...sorts]);
     }
 
@@ -85,6 +93,15 @@ const FilterComponent = (props: { bottomSheetRef: React.RefObject<BottomSheetMet
         setSorts([...sorts]);
     }
 
+    const onFilterPressed = (filter: Filter) => {
+        filter.selected = !filter.selected; 
+        if (filter.name == 'High Ratings') {
+            filter.selected ? dispatch(filterHighRated(true)) : dispatch(filterHighRated(false));
+        }
+        setFilters([...filters]);
+    }
+    
+
     return (
         <View style={styles.container}>
             <Text style={styles.heading}>Filters</Text>
@@ -98,7 +115,7 @@ const FilterComponent = (props: { bottomSheetRef: React.RefObject<BottomSheetMet
                                 style={filter.selected ? styles.chipEnabled : styles.chipDisabled}
                                 closeIcon={filter.selected ? "check" : undefined}
                                 textStyle={{ color: filter.selected ? GlobalStyles.white : GlobalStyles.grey950 }}
-                                onPress={(e) => { filter.selected = !filter.selected; setFilters([...filters]) }}
+                                onPress={(e) => { onFilterPressed(filter) }}
                                 onClose={filter.selected ? () => { filter.selected = !filter.selected; setFilters([...filters]) } : undefined}
                             >{filter.name}</Chip>
                         )

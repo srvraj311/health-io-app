@@ -17,7 +17,7 @@ export const hStyles = StyleSheet.create({
     },
     bottomSheet: {
         elevation: 3,
-        zIndex: 1
+        zIndex: 1,
     },
     header: {
         marginTop: 16,
@@ -53,15 +53,13 @@ export const hStyles = StyleSheet.create({
         borderTopLeftRadius:40,
         zIndex: -1,
         marginTop: 0,
-        // marginTop: -490,
         flex: 1,
         minWidth: '100%',
         width: '100%',
         backgroundColor: GlobalStyles.white,
         height: '100%',
-        marginBottom: -60,
-        paddingVertical: 20,
     },
+    
     keyboardAvoidingView: {
         flex: 1,
         backgroundColor: GlobalStyles.white,
@@ -69,13 +67,26 @@ export const hStyles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: 'flex-start',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        paddingBottom: 60
     },
     scrollView: {
         maxHeight: 1080,
         flexGrow: 1,
         justifyContent: 'flex-start',
         backgroundColor: GlobalStyles.white,
-        height: 'auto'
+        height: 'auto',
     },
+    activityIndicator: {
+        position: 'absolute',
+        top: '50%',
+        left: '25%',
+        marginTop: 25,
+        zIndex: 2,
+        backgroundColor: GlobalStyles.white,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: GlobalStyles.grey300,
+        padding: 30
+    }
 })

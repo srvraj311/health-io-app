@@ -76,7 +76,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
             source={require('../../../assets/images/hospital.png')}
           />
           <View style={{flex: 1, flexDirection: 'column'}}>
-            <Text style={styles.hospitalName}>{hospital.hospital?.name}{hospital.hospital?.name}{hospital.hospital?.name}</Text>
+            <Text style={styles.hospitalName}>{hospital.hospital?.name}</Text>
             <View style={styles.hospitalAddress}>
               <Icon
                 source={'map-marker'}
@@ -88,7 +88,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
                   fontSize: 12,
                   color: GlobalStyles.grey500,
                 }}>
-                {hospital.hospitalInfo?.address}{hospital.hospitalInfo?.address} {hospital.hospitalInfo?.address}
+                {hospital.hospitalInfo?.address}
               </Text>
             </View>
           </View>

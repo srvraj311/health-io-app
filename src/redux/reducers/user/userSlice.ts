@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice, isRejected } from "@reduxjs/toolkit"
 import { User } from '../../../models/User';
-import { removeTokenFromStorage, saveTokenToStorage, validateTokenAndGetUser } from "../../../service/auth/authService";
+import { getTokenFromStorage, removeTokenFromStorage, saveTokenToStorage, validateTokenAndGetUser } from "../../../service/auth/authService";
 import { CurrentUserState } from "./CurrentUserState";
 
 const initialState: CurrentUserState = {
@@ -70,8 +70,9 @@ interface LoginResponse {
 // Call this function from entry level component
 export const isLoggedInAsync = createAsyncThunk(
     "user/checkIsLoggedIn",
-    async (token: string): Promise<LoginResponse> => {
-        return new Promise((resolve, reject) => {
+    async (): Promise<LoginResponse> => {
+        return new Promise( async (resolve, reject) => {
+            const token = await getTokenFromStorage();
             if (!token) {
                 return reject({
                     status: false

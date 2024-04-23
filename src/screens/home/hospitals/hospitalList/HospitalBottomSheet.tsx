@@ -20,6 +20,7 @@ const HospitalBottomSheet = (props: { bottomSheetRef: React.RefObject<BottomShee
         dispatch(setSelectedOption(Constants.OPTION_FILTER));
     }
     const onPressSelectCity = () => {
+        props.bottomSheetRef.current?.expand();
         dispatch(setSelectedOption(Constants.OPTION_SELECT_CITY));
     }
 

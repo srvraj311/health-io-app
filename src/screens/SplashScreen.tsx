@@ -1,14 +1,19 @@
-import {View, Text, useColorScheme} from 'react-native';
+import {View, Text, useColorScheme, Image} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {AppDispatch, RootState} from '../redux/reducers/user/userStore';
 import {useSelector, useDispatch} from 'react-redux';
 import {isLoggedInAsync} from '../redux/reducers/user/userSlice';
-import {getTokenFromStorage, removeTokenFromStorage} from '../service/auth/authService';
+import {
+  getTokenFromStorage,
+  removeTokenFromStorage,
+  saveTokenToStorage,
+} from '../service/auth/authService';
 import splashStyle from '../styles/components/SplashStyles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../navigation/navigation';
 import GlobalStyles from '../styles/general/global_styles';
+import HeadingTexts from '../components/common/HeadingTexts';
 
 const SplashScreen = () => {
   // How we can get the state
@@ -19,37 +24,28 @@ const SplashScreen = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
-    getTokenFromStorage().then(t => {
-      if (t) {
-        if (!user.isCheckingLogin && !user.hasVerifiedToken) {
-            dispatch(isLoggedInAsync(t));
-        }
-        if (!user.isCheckingLogin && user.isLoggedIn && user.hasVerifiedToken) {
-            navigation.replace('Home', { token : t as string});
-        }
-        if(!user.isCheckingLogin && !user.isLoggedIn && user.hasVerifiedToken) {
-            removeTokenFromStorage();
-            navigation.replace('Login');
-        }
-      } else {
-        if(!user.isCheckingLogin && !user.isLoggedIn && !user.hasVerifiedToken) {
-            removeTokenFromStorage();
-            navigation.replace('Login');
-        }
-        if(!user.isCheckingLogin && user.isLoggedIn && !user.hasVerifiedToken) {
-            navigation.replace('Home', { token : t as string});
-        }
-        if(!user.isCheckingLogin && !user.isLoggedIn && user.hasVerifiedToken) {
-            navigation.replace('Login');
-        }
-      }
-      
-    });
-  }, [user.isLoggedIn, user.hasVerifiedToken, user.isCheckingLogin]);
+    if (!user.hasVerifiedToken && !user.isCheckingLogin) {
+      dispatch(isLoggedInAsync());
+    }
+
+    if (user.hasVerifiedToken && !user.isCheckingLogin && user.isLoggedIn) {
+      navigation.replace('Home');
+    }
+
+    if (user.hasVerifiedToken && !user.isCheckingLogin && !user.isLoggedIn) {
+      // removeTokenFromStorage();
+      navigation.replace('Login');
+    }
+  }, [user.isLoggedIn, user.hasVerifiedToken]);
 
   return (
     <View style={splashStyle.container}>
-      <Text style={splashStyle.text}>Getting Token</Text>
+      <Image
+        style={splashStyle.icon}
+        source={require('../assets/images/icon.png')}
+      />
+      <HeadingTexts text1="Health" text2="IO" />
+      <Text style={splashStyle.text}>Your health is our priority</Text>
     </View>
   );
 };

@@ -23,7 +23,7 @@ export const loginStyles = StyleSheet.create({
         paddingTop: 102,
     },
     containerAndoroid: {
-        paddingTop: 70,
+        paddingTop: 90,
     },
     image: {
         height: 125,

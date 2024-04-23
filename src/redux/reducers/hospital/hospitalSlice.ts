@@ -41,14 +41,51 @@ const hospitalState = createSlice({
             state.optionSelected = action.payload
         },
         setFilteredHospitalList: (state, action: PayloadAction<HospitalCardType[]>) => {
-            
+            state.filteredHospitalList = action.payload as any;
+        },
+        sortByName: (state, action: PayloadAction<string>) => {
+            if (action.payload == 'asc') {
+                state.filteredHospitalList.sort((a: HospitalCardType, b: HospitalCardType) => a.name.localeCompare(b.name))
+            } else if (action.payload == 'desc') {
+                state.filteredHospitalList.sort((a: HospitalCardType, b: HospitalCardType) => b.name.localeCompare(a.name))
+            }
+        },
+        sortByRating: (state, action: PayloadAction<string>) => {
+            if (action.payload == 'asc') {
+                state.filteredHospitalList.sort((a: HospitalCardType, b: HospitalCardType) => a.rating?.localeCompare(b.rating))
+            } else if (action.payload == 'desc') {
+                state.filteredHospitalList.sort((a: HospitalCardType, b: HospitalCardType) => b.rating?.localeCompare(a.rating))
+            }
+        },
+        sortByDistance: (state, action: PayloadAction<string>) => {
+            if (action.payload == 'asc') {
+                state.filteredHospitalList.sort((a: HospitalCardType, b: HospitalCardType) => a.distance.localeCompare(b.distance))
+            } else if (action.payload == 'desc') {
+                state.filteredHospitalList.sort((a: HospitalCardType, b: HospitalCardType) => b.distance.localeCompare(a.distance))
+            }
+        },
+        filterHighRated: (state, action: PayloadAction<boolean>) => {
+            if (action.payload) {
+                state.filteredHospitalList = state.hosiptalList?.filter((hospital: HospitalCardType) => Number(hospital.rating) >= 4) as any
+            }    
+        },
+        filterGovernment: (state, action: PayloadAction<boolean>) => {
+            if (action.payload) {
+                // state.filteredHospitalList = state.hosiptalList?.filter((hospital: HospitalCardType) => hospital.) as any
+            }
         }
+       
     },
     extraReducers(builder) {
         builder
             .addCase(getHospitalsAsync.fulfilled, (state, action: PayloadAction<{hospitals: HospitalCardType[]}>) => {
                 if (action.payload.hospitals) {
+                    action.payload.hospitals.forEach((hospital: HospitalCardType) => {
+                        hospital.rating = String((Math.random() * 5).toFixed(1)),
+                        hospital.distance = String((Math.random() * 60).toFixed(0) + ' min')
+                    })
                     state.hosiptalList = action.payload.hospitals
+                    state.filteredHospitalList = action.payload.hospitals as any
                 } // = action.payload.hospitals;
                 state.isFetching = false;
             })
@@ -57,6 +94,7 @@ const hospitalState = createSlice({
             })
             .addCase(getHospitalsAsync.rejected, (state) => {
                 state.hosiptalList = null as any;
+                setFilteredHospitalList([])
                 state.isFetching = false;
             })
             
@@ -83,5 +121,5 @@ export const getHospitalsAsync = createAsyncThunk(
     }
 )
 
-export const { setCityName, setSelectedOption } = hospitalState.actions
+export const { setCityName, setSelectedOption , setFilteredHospitalList, sortByName, sortByRating, sortByDistance, filterHighRated, filterGovernment} = hospitalState.actions
 export default hospitalState.reducer;

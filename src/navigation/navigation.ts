@@ -7,9 +7,7 @@ export type RootStackParamList = {
         email: string;
         isUserExists: boolean;
     }
-    Home: {
-        token: string
-    },
+    Home: undefined,
     Details: undefined;
     SplashScreen: undefined,
     FinishSignup: {
