@@ -1,15 +1,6 @@
-import {
-  Alert,
-  Image,
-  KeyboardAvoidingView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {Alert, Image, StatusBar, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {HospitalState} from '../../../redux/reducers/hospital/hospitalSlice';
 import {AppDispatch, RootState} from '../../../redux/reducers/user/userStore';
 import {useNavigation} from '@react-navigation/native';
 import {
@@ -22,11 +13,12 @@ import HeaderBackButton from '../../../components/buttons/HeaderBackButton';
 import GlobalStyles from '../../../styles/general/global_styles';
 import {gethospitalDataFromApi} from '../../../service/hospital/hospitalService';
 import Hospital from '../../../models/Hospital';
-import {Icon} from 'react-native-paper';
+import {ActivityIndicator, Icon} from 'react-native-paper';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Details from '../../Details';
 import AboutHospital from './About/AboutHospital';
 import AvailabilityFacility from './Availability/AvailabilityFacility';
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from '@gorhom/bottom-sheet';
 type HospitalDetailsProps = NativeStackScreenProps<
   RootStackParamList,
   'HospitalDetails'
@@ -39,6 +31,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [hospital, setHospital] = useState<Hospital>({} as Hospital);
   const Tab = createMaterialTopTabNavigator();
+  const isLoadingActive = !hospital.hospital;
 
   useEffect(() => {
     if (props?.route?.params?.hospital) {
@@ -67,6 +60,20 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
           <HeaderBackButton onPress={() => rootNavigation.goBack()} />
         </View>
       </View>
+
+      {/* Activity Indicator */}
+      {isLoadingActive && (
+        <View style={styles.activityIndicatorContainer}>
+          <View style={styles.activityIndicator}>
+            <ActivityIndicator
+              animating={true}
+              color={GlobalStyles.primaryColour}
+              size="large"
+            />
+            <Text style={{margin: 10}}>Loading Hospital Details</Text>
+          </View>
+        </View>
+      )}
 
       {/* Hospital Name  */}
       <View style={styles.borderPrimary}></View>
@@ -103,7 +110,11 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
             style={styles.infoImage}
             source={require('../../../assets/images/government.png')}
           />
-          <Text style={styles.infoText}>{hospital?.hospital?.type === '0' ? 'Not Updated' : hospital?.hospital?.type}</Text>
+          <Text style={styles.infoText}>
+            {hospital?.hospital?.type === '0'
+              ? 'Not Updated'
+              : hospital?.hospital?.type}
+          </Text>
         </View>
         <View style={styles.infoItem}>
           <Image
@@ -132,7 +143,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
       <Tab.Navigator
         style={styles.tabBar}
         overScrollMode={'always'}
-        backBehavior='firstRoute'
+        backBehavior="firstRoute"
         screenOptions={{
           tabBarItemStyle: {width: 'auto', paddingHorizontal: 20},
           tabBarInactiveTintColor: GlobalStyles.grey400,
@@ -153,7 +164,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
               </Text>
             );
           },
-          
+
           tabBarIndicatorStyle: {
             backgroundColor: GlobalStyles.primaryColour,
             alignContent: 'center',
@@ -168,8 +179,16 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
             elevation: 0,
           },
         }}>
-        <Tab.Screen name="Availability & Facility" component={AvailabilityFacility} initialParams={hospital} />
-        <Tab.Screen name="About" component={AboutHospital} initialParams={{hospital}} />
+        <Tab.Screen
+          name="Availability & Facility"
+          component={AvailabilityFacility}
+          initialParams={hospital}
+        />
+        <Tab.Screen
+          name="About"
+          component={AboutHospital}
+          initialParams={{hospital}}
+        />
         <Tab.Screen name="Blood Bank" component={Details} />
       </Tab.Navigator>
     </SafeAreaView>
@@ -179,6 +198,26 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
 export default HospitalDetails;
 
 const styles = StyleSheet.create({
+  activityIndicatorContainer: {
+    position: 'absolute',
+    height: SCREEN_HEIGHT, 
+    width: SCREEN_WIDTH,
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    zIndex: 2,
+    top: 102
+  },
+  activityIndicator: {
+    position: 'absolute',
+    top: '30%',
+    left: '20%',
+    marginTop: 25,
+    zIndex: 2,
+    backgroundColor: GlobalStyles.white,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: GlobalStyles.grey300,
+    padding: 30,
+  },
   tabLabelFont: {
     fontSize: 16,
     fontFamily: GlobalStyles.baseFontBold,

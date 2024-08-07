@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, InputModeOptions } from 'react-native';
 import React from 'react';
 import { signupStyles } from '../../styles/components/SignupStyles';
 import GlobalStyles from '../../styles/general/global_styles';
-import { TextInput } from 'react-native-paper';
+import { Icon, TextInput } from 'react-native-paper';
 
 const PrimaryInputWhite = ({
   onChangeText,

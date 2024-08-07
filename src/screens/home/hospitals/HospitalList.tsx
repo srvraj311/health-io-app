@@ -68,7 +68,7 @@ const HospitalList = () => {
   const handleOnSearchTextChange = (text: string) => {
     const filteredHospitals = hospitalState.hosiptalList?.filter(
       (hospital: HospitalCardType) =>
-        hospital.name.toLowerCase().includes(text.toLowerCase()) &&
+        hospital.name.toLowerCase().includes(text.toLowerCase()) ||
         hospital.address.toLowerCase().includes(text.toLowerCase()),
     );
     dispatch(setFilteredHospitalList(filteredHospitals));
@@ -124,44 +124,54 @@ const HospitalList = () => {
                 onChangeText={text => {
                   handleOnSearchTextChange(text);
                 }}
+                icon="file-find-outline"
               />
             </View>
             {/* <View style={{marginTop: 40}}></View> */}
           </View>
+          {/* Activity Indicator */}
           {hospitalState.isFetching && (
-            <View style={hStyles.activityIndicator}>
-              <ActivityIndicator
-                animating={hospitalState.isFetching}
-                color={GlobalStyles.primaryColour}
-                size="large"
-              />
-              <Text style={{margin: 10}}>
-                {hospitalState.isFetching ? 'Loading Hospitals' : ''}
-              </Text>
+            <View style={hStyles.activityIndicatorContainer}>
+              <View style={hStyles.activityIndicator}>
+                <ActivityIndicator
+                  animating={hospitalState.isFetching}
+                  color={GlobalStyles.primaryColour}
+                  size="large"
+                />
+                <Text style={{margin: 10}}>
+                  {hospitalState.isFetching ? 'Loading Hospitals' : ''}
+                </Text>
+              </View>
             </View>
           )}
           <ScrollView
             style={hStyles.hospitalCardContainer}
             refreshControl={
-              Platform.OS === 'ios' ?  <RefreshControl
-                refreshing={hospitalState.isFetching}
-                tintColor={GlobalStyles.primaryColour}
-                colors={[GlobalStyles.primaryColour]}
-                onRefresh={() => {
-                  if (hospitalState.cityName) {
-                    dispatch(getHospitalsAsync(hospitalState.cityName));
-                  }
-                }}
-              /> : <></>
+              Platform.OS === 'ios' ? (
+                <RefreshControl
+                  refreshing={hospitalState.isFetching}
+                  tintColor={GlobalStyles.primaryColour}
+                  colors={[GlobalStyles.primaryColour]}
+                  onRefresh={() => {
+                    if (hospitalState.cityName) {
+                      dispatch(getHospitalsAsync(hospitalState.cityName));
+                    }
+                  }}
+                />
+              ) : (
+                <></>
+              )
             }
             onScroll={event => {
               if (event.nativeEvent.contentOffset.y > 0) {
-                bottomSheetRef.current?.snapToIndex(0); 
+                bottomSheetRef.current?.snapToIndex(0);
               }
             }}
             keyboardDismissMode="on-drag">
-              {/* Whitespace on Top of Scrollview */}
-            <View style={{marginTop: 10, paddingTop: 10, width: WINDOW_WIDTH - 10, }} />
+            {/* Whitespace on Top of Scrollview */}
+            <View
+              style={{marginTop: 10, paddingTop: 10, width: WINDOW_WIDTH - 10}}
+            />
             {hospitalState.filteredHospitalList &&
               hospitalState.filteredHospitalList.map(
                 (hospital: any, index: number) => {

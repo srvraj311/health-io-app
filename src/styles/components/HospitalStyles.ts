@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import GlobalStyles from "../general/global_styles";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "@gorhom/bottom-sheet";
 
 export const hStyles = StyleSheet.create({
     container: {
@@ -80,9 +81,16 @@ export const hStyles = StyleSheet.create({
         backgroundColor: GlobalStyles.white,
         height: 'auto',
     },
+    activityIndicatorContainer: {
+        position: 'absolute',
+        height: SCREEN_HEIGHT, 
+        width: SCREEN_WIDTH,
+        backgroundColor: 'rgba(52, 52, 52, 0.8)',
+        zIndex: 2,
+      },
     activityIndicator: {
         position: 'absolute',
-        top: '50%',
+        top: '30%',
         left: '25%',
         marginTop: 25,
         zIndex: 2,
