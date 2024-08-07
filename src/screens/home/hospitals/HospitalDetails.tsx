@@ -26,6 +26,7 @@ import {Icon} from 'react-native-paper';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Details from '../../Details';
 import AboutHospital from './About/AboutHospital';
+import AvailabilityFacility from './Availability/AvailabilityFacility';
 type HospitalDetailsProps = NativeStackScreenProps<
   RootStackParamList,
   'HospitalDetails'
@@ -88,7 +89,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
                   fontSize: 12,
                   color: GlobalStyles.grey500,
                 }}>
-                {hospital.hospitalInfo?.address}
+                {hospital.hospital?.address}
               </Text>
             </View>
           </View>
@@ -102,7 +103,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
             style={styles.infoImage}
             source={require('../../../assets/images/government.png')}
           />
-          <Text style={styles.infoText}>Government</Text>
+          <Text style={styles.infoText}>{hospital?.hospital?.type === '0' ? 'Not Updated' : hospital?.hospital?.type}</Text>
         </View>
         <View style={styles.infoItem}>
           <Image
@@ -167,8 +168,8 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
             elevation: 0,
           },
         }}>
+        <Tab.Screen name="Availability & Facility" component={AvailabilityFacility} initialParams={hospital} />
         <Tab.Screen name="About" component={AboutHospital} initialParams={{hospital}} />
-        <Tab.Screen name="Availability & Facility" component={Details} />
         <Tab.Screen name="Blood Bank" component={Details} />
       </Tab.Navigator>
     </SafeAreaView>

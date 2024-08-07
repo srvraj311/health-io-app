@@ -161,7 +161,7 @@ const HospitalList = () => {
               }
             }}
             keyboardDismissMode="on-drag">
-            <View style={{marginTop: 20}} />
+            <View style={{marginTop: 20, width: '100%'}} />
             {hospitalState.filteredHospitalList &&
               hospitalState.filteredHospitalList.map(
                 (hospital: any, index: number) => {

@@ -28,11 +28,11 @@ export const gethospitalDataFromApi = (hosipital_id: string) => {
         Alert.alert("Invalid hospital selection, try again");
     }
 
-    return get(ApiEndpoints.GET_HOSPITAL_BY_ID, {} , {
-        params : {
+    return post(ApiEndpoints.GET_HOSPITAL_BY_ID,
+        {
             hospital_id: hosipital_id
-        }
-    })
+        },
+    )
 }
 
 

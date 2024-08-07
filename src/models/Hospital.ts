@@ -9,6 +9,7 @@ export default interface Hospital {
         opening_time: string,
         closing_time: string,
         geolocation: string,
+        address: string,
     },
     hospitalInfo : {
         id: string,
@@ -39,6 +40,19 @@ export default interface Hospital {
         a_positive: number,
         b_positive: number
     },
+    availability: {
+        bed: number,
+        total_bed: number,
+        icu: number,
+        total_icu: number,
+        ccu: number,
+        total_ccu: number
+        ventilator: number,
+        total_ventilator: number,
+        oxygen_cylinders: number,
+        total_oxygen_cylinders: number
+        created_at: string
+    }
 }
 
 // Refered hospital response
