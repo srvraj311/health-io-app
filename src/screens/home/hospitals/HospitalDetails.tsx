@@ -144,6 +144,7 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
         style={styles.tabBar}
         overScrollMode={'always'}
         backBehavior="firstRoute"
+        initialLayout={{width: SCREEN_WIDTH}}
         screenOptions={{
           tabBarItemStyle: {width: 'auto', paddingHorizontal: 20},
           tabBarInactiveTintColor: GlobalStyles.grey400,
@@ -181,14 +182,15 @@ const HospitalDetails = (props: HospitalDetailsProps) => {
         }}>
         <Tab.Screen
           name="Availability & Facility"
-          component={AvailabilityFacility}
-          initialParams={hospital}
-        />
+        >
+          {(props) => <AvailabilityFacility hospital={hospital} />}
+        </Tab.Screen>
         <Tab.Screen
           name="About"
-          component={AboutHospital}
           initialParams={{hospital}}
-        />
+        >
+          {(props) => <AboutHospital hospital={hospital} />}
+          </Tab.Screen>
         <Tab.Screen name="Blood Bank" component={Details} />
       </Tab.Navigator>
     </SafeAreaView>
@@ -256,21 +258,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginHorizontal: 0,
-    marginVertical: 24,
+    marginVertical: 10,
   },
   hospitalAddress: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     marginStart: 12,
-    marginVertical: 8,
+    marginVertical: 6,
   },
   content_name: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     marginHorizontal: 24,
-    marginVertical: 20,
+    marginTop: 24,
+    marginBottom: 24 / 2
   },
   hospitalName: {
     fontSize: 16,
@@ -293,7 +296,7 @@ const styles = StyleSheet.create({
   content: {},
   borderPrimary: {
     height: 3,
-    width: 500,
+    width: SCREEN_WIDTH,
     backgroundColor: GlobalStyles.primaryColour,
   },
   header: {
