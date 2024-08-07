@@ -10,7 +10,7 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {getCityNameFromStorage} from '../../../service/hospital/hospitalService';
 import {AppDispatch, RootState} from '../../../redux/reducers/user/userStore';
 import {useDispatch, useSelector} from 'react-redux';
-import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
+import BottomSheet, {BottomSheetView, WINDOW_WIDTH} from '@gorhom/bottom-sheet';
 import {hStyles} from '../../../styles/components/HospitalStyles';
 import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
 import GlobalStyles from '../../../styles/general/global_styles';
@@ -140,7 +140,6 @@ const HospitalList = () => {
               </Text>
             </View>
           )}
-
           <ScrollView
             style={hStyles.hospitalCardContainer}
             refreshControl={
@@ -161,7 +160,8 @@ const HospitalList = () => {
               }
             }}
             keyboardDismissMode="on-drag">
-            <View style={{marginTop: 20, width: '100%'}} />
+              {/* Whitespace on Top of Scrollview */}
+            <View style={{marginTop: 10, paddingTop: 10, width: WINDOW_WIDTH - 10, }} />
             {hospitalState.filteredHospitalList &&
               hospitalState.filteredHospitalList.map(
                 (hospital: any, index: number) => {

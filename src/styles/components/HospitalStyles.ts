@@ -57,7 +57,6 @@ export const hStyles = StyleSheet.create({
         marginTop: 0,
         position: 'relative',
         overflow: 'hidden',
-        minWidth: '100%',
         width: '100%',
         backgroundColor: GlobalStyles.white,
         height: '100%',
